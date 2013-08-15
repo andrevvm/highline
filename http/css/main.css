@@ -190,7 +190,8 @@ nav a:hover span {
 }
 
 .product-list li.vert {
-    width: 25%;
+    margin: 0 4%;
+    width: 28%;
 }
 
 .product-list li a {
@@ -264,13 +265,6 @@ nav a:hover span {
 
 
 
-
-
-
-
-
-
-
 /* ==========================================================================
    Media Queries
    ========================================================================== */
@@ -288,6 +282,11 @@ nav a:hover span {
     .product-list li {
         margin: 0 3.26% 8%;
         width: 43.25%;
+    }
+
+    .product-list li.vert {
+        margin: 0 3.26% 8%;
+        width: 26.5%;
     }
 
 }
