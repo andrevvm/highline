@@ -181,17 +181,16 @@ nav a:hover span {
 }
 
 .product-list li {
-    margin: 0 5%;
+    margin: 0 5% 10%;
     width: 80%;
     display: inline-block;
-    margin-bottom: 10%;
     vertical-align: middle;
     position: relative;
 }
 
 .product-list li.vert {
-    margin: 0 4%;
-    width: 28%;
+    margin: 0 4% 10%;
+    width: 35.6%;
 }
 
 .product-list li a {
@@ -202,8 +201,7 @@ nav a:hover span {
     height: 100%;
     background-color: black;
     background-color: rgba(0,0,0,0);
-    -webkit-transition: background-color 0.2s;
-    -moz-transition: background-color 0.2s;
+    white-space: nowrap;
 }
 
 .product-list .product-meta {
@@ -212,13 +210,11 @@ nav a:hover span {
     color: #fff;
     opacity: 0;
     position: relative;
-    top: -0.3em;
-    -webkit-transition: top 0.2s, opacity 0.2s;
-    -moz-transition: top 0.2s, opacity 0.2s;
+    top: -1em;
+    white-space: normal;
 }
 
 .product-list li a:hover .product-meta {
-    top: -0.6em;
     opacity: 1;
 }
 
@@ -230,14 +226,14 @@ nav a:hover span {
 }
 
 .product-list h2 {
-    font-size: 32px;
-    font-size: 3.2rem;
+    font-size: 20px;
+    font-size: 2rem;
     margin: 0;
 }
 
 .product-list p {
-    font-size: 16px;
-    font-size: 1.6rem;
+    font-size: 12px;
+    font-size: 1.2rem;
     margin: 0.3em;
     text-transform: uppercase;
     letter-spacing: 0.07em;
@@ -270,7 +266,15 @@ nav a:hover span {
    ========================================================================== */
 
 @media only screen and (min-width: 480px) {
+    .product-list h2 {
+        font-size: 24px;
+        font-size: 2.4rem;
+    }
 
+    .product-list p {
+        font-size: 14px;
+        font-size: 1.4rem;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -289,9 +293,29 @@ nav a:hover span {
         width: 26.5%;
     }
 
+    .product-list h2 {
+        font-size: 24px;
+        font-size: 2.4rem;
+    }
+
+    .product-list p {
+        font-size: 14px;
+        font-size: 1.4rem;
+    }
+
 }
 
 @media only screen and (min-width: 1140px) {
+
+    .product-list h2 {
+        font-size: 32px;
+        font-size: 3.2rem;
+    }
+
+    .product-list p {
+        font-size: 16px;
+        font-size: 1.6rem;
+    }
 
 }
 /* ==========================================================================
