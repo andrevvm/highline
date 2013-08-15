@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,900|Open+Sans:300' rel='stylesheet' type='text/css'>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>
+            {{store_name}}
+            {{! Add the label of the current navigation item on list pages }}
+            {{#list_page}}{{#navigation}}{{#is_current}}- {{label}}{{/is_current}}{{/navigation}}{{/list_page}}
+            {{! Add the product title on product pages }}
+            {{#product_page}}{{#product}}- {{title}}{{/product}}{{/product_page}}
+            {{! Add "About" on the about page }}
+            {{#about_page}}- {{#lang}}About{{/lang}}{{/about_page}}
+        </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <header class="page-header">
+            <h1><a href="#">Highline</a></h1>
+
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#"><span>Men</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span>Women</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span>Children</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span>Men</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span>Women</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span>Children</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span>Men</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span>Women</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span>Children</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="product-list">
+            <ul>
+                <li class="horz">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://lorempixel.com/output/abstract-q-c-500-333-5.jpg" />
+                </li>
+                <li class="horz">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://lorempixel.com/output/abstract-q-c-500-333-2.jpg" />
+                </li>
+                <li class="vert">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" />
+                </li>
+                <li class="horz"><img src="http://lorempixel.com/output/abstract-q-c-500-333-10.jpg" /></li>
+                <li class="horz"><img src="http://lorempixel.com/output/abstract-q-c-500-333-2.jpg" /></li>
+                <li class="vert"><img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" /></li>
+                <li class="vert"><img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" /></li>
+                <li class="vert"><img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" /></li>
+                <li class="vert"><img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" /></li>
+            </ul>
+        </section>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>
