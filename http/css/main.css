@@ -189,6 +189,10 @@ nav a:hover span {
     position: relative;
 }
 
+.product-list li.vert {
+    width: 25%;
+}
+
 .product-list li a {
     position: absolute;
     top: 0;
@@ -253,7 +257,7 @@ nav a:hover span {
 
 .product-list li.vert img {
     display: block;
-    width: 66.7%;
+    width: 100%;
     height: auto;
     margin: 0 auto;
 }
