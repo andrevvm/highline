@@ -213,6 +213,8 @@ nav a:hover span {
     position: relative;
     top: -0.8em;
     white-space: normal;
+    background: rgba(0,0,0,0.8);
+    padding: 2em;
 }
 
 .product-list li a:hover .product-meta {
@@ -241,7 +243,7 @@ nav a:hover span {
 }
 
 .product-list li a:hover {
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0);
 }
 
 .product-list li:nth-child(odd) {

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,900|Open+Sans:300' rel='stylesheet' type='text/css'>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>
+            {{store_name}}
+            {{! Add the label of the current navigation item on list pages }}
+            {{#list_page}}{{#navigation}}{{#is_current}}- {{label}}{{/is_current}}{{/navigation}}{{/list_page}}
+            {{! Add the product title on product pages }}
+            {{#product_page}}{{#product}}- {{title}}{{/product}}{{/product_page}}
+            {{! Add "About" on the about page }}
+            {{#about_page}}- {{#lang}}About{{/lang}}{{/about_page}}
+        </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <style>
+
+            html {
+                font-size: 62.5%;
+            }
+
+            body {
+                line-height: 1.4;
+                font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-weight: 100;
+                color: #202020;
+                padding-top: 180px;
+                min-width: 320px;
+            }
+
+            a {
+                text-decoration: none;
+                color: #202020;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                font-family: "Playfair Display", "Times New Roman", Times, serif;
+                font-weight: 400;
+                letter-spacing: -0.03em;
+                margin: 0.5em 0;
+            }
+
+
+            ul, li {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            h1 {
+                font-weight: 900;
+                font-size: 32px;
+                font-size: 3.2rem;
+                text-align: center;
+                line-height: 1;
+            }
+
+            h1 a {
+                display: inline-block;
+                padding: 0.1em 0.2em 0.2em;
+            }
+
+            h1 a:hover {
+                text-decoration: none;
+                background: #fff;
+            }
+
+            ::-moz-selection {
+                background: #FFECEC;
+                text-shadow: none;
+            }
+
+            ::selection {
+                background: #FFECEC;
+                text-shadow: none;
+            }
+
+            hr {
+                display: block;
+                height: 1px;
+                border: 0;
+                border-top: 1px solid #ccc;
+                margin: 1em 0;
+                padding: 0;
+            }
+
+            img {
+                vertical-align: middle;
+            }
+
+            fieldset {
+                border: 0;
+                margin: 0;
+                padding: 0;
+            }
+
+            textarea {
+                resize: vertical;
+            }
+
+            p {
+                font-size: 16px;
+                font-size: 1.6rem;
+            }
+
+            .page-header {
+                position: fixed;
+                z-index: 1000;
+                width: 100%;
+                min-width: 320px;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+            }
+
+            .page-header h1 {
+                display: inline-block;
+                height: 0;
+                width: 100%;
+                text-align: center;
+                margin: 10px auto 0;
+                padding: 10px;
+                pointer-events: auto;
+                position: absolute;
+                left: -10px;
+            }
+
+            nav {
+                position: absolute;
+                display: inline-block;
+                height: 0;
+                width: 100%;
+                text-align: center;
+                top: 120px;
+                pointer-events: auto;
+            }
+
+            nav > ul {
+                display: inline-block;
+                text-align: center;
+            }
+
+            nav > ul > ul {
+                text-align: left;
+            }
+
+            nav ul li {
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                display: inline-block;
+            }
+
+            nav ul > li {
+                font-size: 16px;
+                font-size: 1.6rem;
+                margin: 0 0.2em;
+            }
+
+            nav ul > li > li {
+                font-size: 12px;
+                font-size: 1.2rem;
+            }
+
+            nav a {
+                display: inline-block;
+                padding: 0.2em 0.4em 0.3em;
+            }
+
+            nav a span {
+                display: inline-block;
+                padding-bottom: 0.2em;
+            }
+
+            nav a:hover {
+                background: #fff;
+            }
+
+            nav a span {
+                border-bottom: 1px solid transparent;
+            }
+
+            nav a:hover span {
+                border-bottom: 1px solid #202020;
+                text-decoration: none;
+            }
+
+            .product-list {
+                margin: 0 5%;
+                text-align: center;
+            }
+
+            .product-list li {
+                margin: 0 5% 10%;
+                width: 80%;
+                display: inline-block;
+                vertical-align: middle;
+                position: relative;
+            }
+
+            .product-list li.vert {
+                margin: 0 4% 10%;
+                width: 35.6%;
+            }
+
+            .product-list li a {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: black;
+                background-color: rgba(0,0,0,0);
+                white-space: nowrap;
+                -webkit-transition: background-color .1s;
+            }
+
+            .product-list .product-meta {
+                display: inline-block;
+                vertical-align: middle;
+                color: #fff;
+                opacity: 0;
+                position: relative;
+                top: -0.8em;
+                white-space: normal;
+                background: rgba(0,0,0,0.8);
+                padding: 2em;
+                max-width: 60%;
+            }
+
+            .product-list li a:hover .product-meta {
+                opacity: 1;
+            }
+
+            .product-list .product-meta.out-of-stock {
+                background: rgba(255,64,64,0.8);
+            }
+
+            .product-list li .spacer {
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle;
+                width: 0;
+            }
+
+            .product-list h2 {
+                font-size: 20px;
+                font-size: 2rem;
+                margin: 0;
+            }
+
+            .product-list p {
+                font-size: 12px;
+                font-size: 1.2rem;
+                margin: 0.3em;
+                text-transform: uppercase;
+                letter-spacing: 0.07em;
+            }
+
+            .product-list li a:hover {
+                background-color: rgba(0,0,0,0);
+            }
+
+            .product-list li:nth-child(odd) {
+                clear: both;
+            }
+
+            .product-list li.horz img {
+                width: 100%;
+                height: auto;
+            }
+
+            .product-list li.vert img {
+                display: block;
+                width: 100%;
+                height: auto;
+                margin: 0 auto;
+            }
+
+
+
+            /* ==========================================================================
+               Media Queries
+               ========================================================================== */
+
+            @media only screen and (min-width: 480px) {
+                h1 {
+                    font-size: 48px;
+                    font-size: 4.8rem;
+                }
+
+                .product-list h2 {
+                    font-size: 24px;
+                    font-size: 2.4rem;
+                }
+
+                .product-list p {
+                    font-size: 14px;
+                    font-size: 1.4rem;
+                }
+            }
+
+            @media only screen and (min-width: 768px) {
+
+                h1 {
+                    font-size: 56px;
+                    font-size: 5.6rem;
+                }
+
+                .product-list {
+                    margin: 0 3.26%;
+                }
+
+                .product-list li {
+                    margin: 0 3.26% 8%;
+                    width: 43.25%;
+                }
+
+                .product-list li.vert {
+                    margin: 0 3.26% 8%;
+                    width: 26.5%;
+                }
+
+                .product-list h2 {
+                    font-size: 24px;
+                    font-size: 2.4rem;
+                }
+
+                .product-list p {
+                    font-size: 14px;
+                    font-size: 1.4rem;
+                }
+
+            }
+
+            @media only screen and (min-width: 1140px) {
+
+                h1 {
+                    font-size: 64px;
+                    font-size: 6.4rem;
+                }
+
+                .product-list h2 {
+                    font-size: 32px;
+                    font-size: 3.2rem;
+                }
+
+                .product-list p {
+                    font-size: 16px;
+                    font-size: 1.6rem;
+                }
+
+            }
+            /* ==========================================================================
+               Print styles
+               ========================================================================== */
+
+            @media print {
+                * {
+                    background: transparent !important;
+                    color: #000 !important; /* Black prints faster: h5bp.com/s */
+                    box-shadow: none !important;
+                    text-shadow: none !important;
+                }
+
+                a,
+                a:visited {
+                    text-decoration: underline;
+                }
+
+                a[href]:after {
+                    content: " (" attr(href) ")";
+                }
+
+                abbr[title]:after {
+                    content: " (" attr(title) ")";
+                }
+
+                /*
+                 * Don't show links for images, or javascript/internal links
+                 */
+
+                .ir a:after,
+                a[href^="javascript:"]:after,
+                a[href^="#"]:after {
+                    content: "";
+                }
+
+                pre,
+                blockquote {
+                    border: 1px solid #999;
+                    page-break-inside: avoid;
+                }
+
+                thead {
+                    display: table-header-group; /* h5bp.com/t */
+                }
+
+                tr,
+                img {
+                    page-break-inside: avoid;
+                }
+
+                img {
+                    max-width: 100% !important;
+                }
+
+                @page {
+                    margin: 0.5cm;
+                }
+
+                p,
+                h2,
+                h3 {
+                    orphans: 3;
+                    widows: 3;
+                }
+
+                h2,
+                h3 {
+                    page-break-after: avoid;
+                }
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <header class="page-header">
+            <h1><a href="{{store_url}}">{{store_name}}</a></h1>
+
+            <nav>
+                <ul>
+                    {{#navigation}}
+                    <li>
+                        <a href="{{url}}"><span>{{label}}</span></a>
+                    </li>
+                    {{/navigation}}
+                </ul>
+            </nav>
+        </header>
+        {{#list_page}}
+        <section class="product-list">
+            <ul>
+                {{#products}}
+                    
+                    <li class="horz">
+                        <a href="#">
+                            <span class="spacer"></span>
+                            <div class="product-meta {{#out_of_stock}}out-of-stock{{/out_of_stock}}">
+                                <h2>{{title}}</h2>
+                                {{#in_stock}}
+                                    <p>{{price_without_currency}} {{currency_code}}</p>
+                                {{/in_stock}}
+                                {{#out_of_stock}}
+                                    <p>Out of Stock</p>
+                                {{/out_of_stock}}
+                            </div>
+                        </a>
+                        {{#primary_image}}
+                            <img src="{{url-1000}}" />
+                        {{/primary_image}}
+                    </li>
+
+                {{/products}}
+                <li class="horz">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://lorempixel.com/output/abstract-q-c-500-333-2.jpg" />
+                </li>
+                <li class="horz">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://lorempixel.com/output/abstract-q-c-500-333-2.jpg" />
+                </li>
+                <li class="horz">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://lorempixel.com/output/abstract-q-c-500-333-5.jpg" />
+                </li>
+                
+                <li class="vert">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" />
+                </li>
+                <li class="vert">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" />
+                </li>
+                <li class="">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" />
+                </li>
+                <li class="">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" />
+                </li>
+                <li class="">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" />
+                </li>
+                <li class="">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" />
+                </li>
+                <li class="horz">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://lorempixel.com/output/abstract-q-c-500-333-5.jpg" />
+                </li>
+                <li class="horz">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://lorempixel.com/output/abstract-q-c-500-333-5.jpg" />
+                </li>
+                <li class="horz">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://lorempixel.com/output/abstract-q-c-500-333-5.jpg" />
+                </li>
+
+            </ul>
+        </section>
+        {{/list_page}}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>
+            $(function() {
+              $(".product-list img").each(function() {
+                $(this).hide();
+                $(this).one('load', function() {
+                  $(this).fadeIn(200);
+                    if($(this).height() / $(this).width() >= 1.25) {
+                        $(this).closest("li").removeClass("horz").addClass("vert");
+                    }
+                }).each(function() {
+                  if(this.complete) $(this).load();
+                });
+               
+
+              });
+
+              
+            });
+        </script>
+    </body>
+</html>
