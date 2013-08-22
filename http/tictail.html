@@ -20,6 +20,24 @@
 
             html {
                 font-size: 62.5%;
+                background: #FFF;
+            }
+
+            .page-header h1, nav li {
+                -webkit-transition: font-size .2s;
+                -moz-transition: font-size .2s;
+                -o-transition: font-size .2s;
+                -ms-transition: font-size .2s;
+                transition: .2s;
+            }
+
+            .border {
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                box-shadow: inset 10px 10px 0 0 black, inset -10px -10px 0 0 black;
             }
 
             body {
@@ -27,7 +45,6 @@
                 font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
                 font-weight: 100;
                 color: #202020;
-                padding-top: 180px;
                 min-width: 320px;
             }
 
@@ -45,6 +62,7 @@
                 font-weight: 400;
                 letter-spacing: -0.03em;
                 margin: 0.5em 0;
+                text-rendering: optimizeLegibility;
             }
 
 
@@ -64,12 +82,12 @@
 
             h1 a {
                 display: inline-block;
-                padding: 0.1em 0.2em 0.2em;
+                padding: 0.2em 0.3em;
             }
 
             h1 a:hover {
                 text-decoration: none;
-                background: #fff;
+                background: #FFECEC;
             }
 
             ::-moz-selection {
@@ -95,6 +113,14 @@
                 vertical-align: middle;
             }
 
+            .js .product-list img {
+              -webkit-transition: opacity 1s;
+              -moz-transition: opacity 1s;
+              -o-transition: opacity 1s;
+              -ms-transition: opacity 1s;
+              transition: opacity 1s;
+            }
+
             fieldset {
                 border: 0;
                 margin: 0;
@@ -111,7 +137,7 @@
             }
 
             .page-header {
-                position: fixed;
+                position: relative;
                 z-index: 1000;
                 width: 100%;
                 min-width: 320px;
@@ -120,26 +146,27 @@
                 pointer-events: none;
             }
 
+            #imposter.page-header {
+              display: none;
+            }
+
             .page-header h1 {
-                display: inline-block;
-                height: 0;
-                width: 100%;
+                display: block;
                 text-align: center;
-                margin: 10px auto 0;
+                margin: 0 auto;
                 padding: 10px;
+                position: relative;
+            }
+
+            .page-header h1 a {
                 pointer-events: auto;
-                position: absolute;
-                left: -10px;
             }
 
             nav {
-                position: absolute;
-                display: inline-block;
-                height: 0;
+                display: block;
                 width: 100%;
                 text-align: center;
-                top: 120px;
-                pointer-events: auto;
+                margin-bottom: 20px;
             }
 
             nav > ul {
@@ -155,11 +182,12 @@
                 text-transform: uppercase;
                 letter-spacing: 0.08em;
                 display: inline-block;
+                pointer-events: auto;
             }
 
             nav ul > li {
-                font-size: 16px;
-                font-size: 1.6rem;
+                font-size: 12px;
+                font-size: 1.2rem;
                 margin: 0 0.2em;
             }
 
@@ -170,12 +198,12 @@
 
             nav a {
                 display: inline-block;
-                padding: 0.2em 0.4em 0.3em;
+                padding: 0.1em 0.3em 0.3em;
             }
 
             nav a span {
                 display: inline-block;
-                padding-bottom: 0.2em;
+                padding-bottom: 0.1em;
             }
 
             nav a:hover {
@@ -194,6 +222,11 @@
             .product-list {
                 margin: 0 5%;
                 text-align: center;
+              -webkit-transition: opacity .2s;
+              -moz-transition: opacity .2s;
+              -o-transition: opacity .2s;
+              -ms-transition: opacity .2s;
+              transition: opacity .2s;
             }
 
             .product-list li {
@@ -284,15 +317,45 @@
             }
 
 
+            #product-images {
+              text-align: center;
+            }
+
+            #product-images img {
+              width: auto;
+              height: auto;
+              max-width: 300px;
+              max-height: 500px;
+            }
+
+
 
             /* ==========================================================================
                Media Queries
                ========================================================================== */
 
             @media only screen and (min-width: 480px) {
+
+                .page-header {
+                    position: fixed;
+                    margin-bottom: 2.2em;
+                }
+
+                #imposter.page-header {
+                  position: relative;
+                  display: block;
+                  opacity: 0;
+                  z-index: 0;
+                }
+
                 h1 {
-                    font-size: 48px;
-                    font-size: 4.8rem;
+                    font-size: 42px;
+                    font-size: 4.2rem;
+                }
+
+                nav ul > li {
+                    font-size: 14px;
+                    font-size: 1.4rem;
                 }
 
                 .product-list h2 {
@@ -304,13 +367,26 @@
                     font-size: 14px;
                     font-size: 1.4rem;
                 }
+
+                #product-images img {
+                  width: auto;
+                  height: auto;
+                  max-width: 380px;
+                  max-height: 400px;
+                }
+                
             }
 
             @media only screen and (min-width: 768px) {
 
                 h1 {
-                    font-size: 56px;
-                    font-size: 5.6rem;
+                    font-size: 52px;
+                    font-size: 5.2rem;
+                }
+
+                nav ul > li {
+                    font-size: 16px;
+                    font-size: 1.6rem;
                 }
 
                 .product-list {
@@ -320,6 +396,7 @@
                 .product-list li {
                     margin: 0 3.26% 8%;
                     width: 43.25%;
+                    max-width: 500px;
                 }
 
                 .product-list li.vert {
@@ -337,13 +414,29 @@
                     font-size: 1.4rem;
                 }
 
+                #product-images img {
+                  width: auto;
+                  height: auto;
+                  max-width: 500px;
+                  max-height: 600px;
+                }
+
             }
 
             @media only screen and (min-width: 1140px) {
 
                 h1 {
-                    font-size: 64px;
-                    font-size: 6.4rem;
+                    font-size: 72px;
+                    font-size: 7.2rem;
+                }
+
+                nav ul > li {
+                    font-size: 18px;
+                    font-size: 1.8rem;
+                }
+
+                .product-list {
+                    margin: 0 3.26%;
                 }
 
                 .product-list h2 {
@@ -356,7 +449,28 @@
                     font-size: 1.6rem;
                 }
 
+                #product-images img {
+                  width: auto;
+                  height: auto;
+                  max-width: 1000px;
+                  max-height: 800px;
+                }
+
             }
+
+            @media only screen and (min-width: 1500px) {
+              .product-list li {
+                    margin: 0 3.26% 8%;
+                    width: 26.5%;
+                }
+
+              .product-list li.vert {
+                  margin: 0 3.26% 8%;
+                  width: 26.5%;
+              }
+
+            }
+
             /* ==========================================================================
                Print styles
                ========================================================================== */
@@ -432,6 +546,7 @@
 
     </head>
     <body>
+        <div class="border"></div>
         <header class="page-header">
             <h1><a href="{{store_url}}">{{store_name}}</a></h1>
 
@@ -451,7 +566,7 @@
                 {{#products}}
                     
                     <li class="horz">
-                        <a href="#">
+                        <a href="{{url}}">
                             <span class="spacer"></span>
                             <div class="product-meta {{#out_of_stock}}out-of-stock{{/out_of_stock}}">
                                 <h2>{{title}}</h2>
@@ -464,7 +579,7 @@
                             </div>
                         </a>
                         {{#primary_image}}
-                            <img src="{{url-1000}}" />
+                            <img src="{{url-500}}" />
                         {{/primary_image}}
                     </li>
 
@@ -477,7 +592,7 @@
                             <p>500 Eur</p>
                         </div>
                     </a>
-                    <img src="http://lorempixel.com/output/abstract-q-c-500-333-2.jpg" />
+                    <img src="http://placekitten.com/g/500/333" />
                 </li>
                 <li class="horz">
                     <a href="#">
@@ -487,7 +602,7 @@
                             <p>500 Eur</p>
                         </div>
                     </a>
-                    <img src="http://lorempixel.com/output/abstract-q-c-500-333-2.jpg" />
+                    <img src="http://placekitten.com/g/500/400" />
                 </li>
                 <li class="horz">
                     <a href="#">
@@ -497,7 +612,7 @@
                             <p>500 Eur</p>
                         </div>
                     </a>
-                    <img src="http://lorempixel.com/output/abstract-q-c-500-333-5.jpg" />
+                    <img src="http://placekitten.com/g/500/335" />
                 </li>
                 
                 <li class="vert">
@@ -508,7 +623,7 @@
                             <p>500 Eur</p>
                         </div>
                     </a>
-                    <img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" />
+                    <img src="http://placekitten.com/g/333/500" />
                 </li>
                 <li class="vert">
                     <a href="#">
@@ -518,47 +633,7 @@
                             <p>500 Eur</p>
                         </div>
                     </a>
-                    <img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" />
-                </li>
-                <li class="">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" />
-                </li>
-                <li class="">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" />
-                </li>
-                <li class="">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" />
-                </li>
-                <li class="">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://lorempixel.com/output/abstract-h-c-333-500-8.jpg" />
+                    <img src="http://placekitten.com/g/333/600" />
                 </li>
                 <li class="horz">
                     <a href="#">
@@ -568,7 +643,7 @@
                             <p>500 Eur</p>
                         </div>
                     </a>
-                    <img src="http://lorempixel.com/output/abstract-q-c-500-333-5.jpg" />
+                    <img src="http://placekitten.com/g/500/334" />
                 </li>
                 <li class="horz">
                     <a href="#">
@@ -578,7 +653,7 @@
                             <p>500 Eur</p>
                         </div>
                     </a>
-                    <img src="http://lorempixel.com/output/abstract-q-c-500-333-5.jpg" />
+                    <img src="http://placekitten.com/g/500/336" />
                 </li>
                 <li class="horz">
                     <a href="#">
@@ -588,24 +663,100 @@
                             <p>500 Eur</p>
                         </div>
                     </a>
-                    <img src="http://lorempixel.com/output/abstract-q-c-500-333-5.jpg" />
+                    <img src="http://placekitten.com/g/500/333" />
+                </li>
+                <li class="horz">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://placekitten.com/g/500/500" />
+                </li>
+                <li class="horz">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://placekitten.com/g/333/500" />
+                </li>
+                <li class="horz">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://placekitten.com/g/333/500" />
+                </li>
+                <li class="horz">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://placekitten.com/g/333/500" />
+                </li>
+                <li class="horz">
+                    <a href="#">
+                        <span class="spacer"></span>
+                        <div class="product-meta">
+                            <h2>Blue Jeans</h2>
+                            <p>500 Eur</p>
+                        </div>
+                    </a>
+                    <img src="http://placekitten.com/g/333/500" />
                 </li>
 
             </ul>
         </section>
         {{/list_page}}
+
+        {{#product_page}}
+        {{#product}}
+        <div id="product-images">
+          {{#primary_image}}
+            <img src="{{url-1000}}" />
+          {{/primary_image}}
+        </div>
+        {{/product}}
+        {{/product_page}}
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>
             $(function() {
+              $("body").addClass("js");
+
+              $("header h1").hover(function(){
+                  $("html").css("background-color", "#FFECEC");
+              }, function() {
+                  $("html").css("background-color", "#FFF");
+              });
+
+              $(".page-header").clone().prependTo('body').attr('id','imposter');
+
               $(".product-list img").each(function() {
-                $(this).hide();
+                
+                $(this).css("opacity", 0);
                 $(this).one('load', function() {
-                  $(this).fadeIn(200);
+                  $(this).css("opacity",1);
                     if($(this).height() / $(this).width() >= 1.25) {
                         $(this).closest("li").removeClass("horz").addClass("vert");
                     }
                 }).each(function() {
                   if(this.complete) $(this).load();
+                });
+
+                $(this).prev('a').click(function() {
+                  $(".product-list").css("opacity",0);
                 });
                
 
