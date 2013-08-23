@@ -18,6 +18,10 @@
 
         <style>
 
+            #tt_colophon {
+              margin: 10px;
+            }
+
             html {
                 font-size: 62.5%;
                 background: #FFF;
@@ -37,7 +41,7 @@
                 top: 0;
                 height: 100%;
                 width: 100%;
-                box-shadow: inset 10px 10px 0 0 black, inset -10px -10px 0 0 black;
+                box-shadow: none;
             }
 
             body {
@@ -46,6 +50,8 @@
                 font-weight: 100;
                 color: #202020;
                 min-width: 320px;
+                margin: 0;
+                padding: 0;
             }
 
             a {
@@ -87,7 +93,7 @@
 
             h1 a:hover {
                 text-decoration: none;
-                background: #FFECEC;
+                background: #FFF;
             }
 
             ::-moz-selection {
@@ -314,12 +320,31 @@
 
             #product-images {
               text-align: center;
+              padding-bottom: 100px;
             }
 
             #product-images .rotation img {
               width: 60%;
               height: auto;
               max-width: 300px;
+            }
+
+            .rotation {
+              width: 100%;
+              overflow: hidden;
+              white-space: nowrap;
+            }
+
+            .rotation-ship {
+              position: relative;
+              z-index: 100;
+              width: 200%;
+              -webkit-transition: left .5s;
+            }
+
+            .rotation .slide {
+              float: left;
+              width: 50%;
             }
 
 
@@ -329,6 +354,10 @@
                ========================================================================== */
 
             @media only screen and (min-width: 480px) {
+
+                .border {
+                  box-shadow: inset 4px 4px 0 0 black, inset -4px -4px 0 0 black;
+                }
 
                 .page-header {
                     position: fixed;
@@ -373,6 +402,8 @@
                   top: calc(50% - 25px);
                   height: 50px;
                   text-align: center;
+                  z-index: 101;
+                  cursor: pointer;
                 }
 
                 .image-nav img {
@@ -390,6 +421,10 @@
             }
 
             @media only screen and (min-width: 768px) {
+
+                .border {
+                  box-shadow: inset 8px 8px 0 0 black, inset -8px -8px 0 0 black;
+                }
 
                 h1 {
                     font-size: 52px;
@@ -434,6 +469,10 @@
             }
 
             @media only screen and (min-width: 1140px) {
+
+                .border {
+                  box-shadow: inset 10px 10px 0 0 black, inset -10px -10px 0 0 black;
+                }
 
                 h1 {
                     font-size: 72px;
@@ -578,137 +617,6 @@
                     </li>
 
                 {{/products}}
-                <li class="horz">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://placekitten.com/g/500/333" />
-                </li>
-                <li class="horz">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://placekitten.com/g/500/400" />
-                </li>
-                <li class="horz">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://placekitten.com/g/500/335" />
-                </li>
-                
-                <li class="vert">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://placekitten.com/g/333/500" />
-                </li>
-                <li class="vert">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://placekitten.com/g/333/600" />
-                </li>
-                <li class="horz">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://placekitten.com/g/500/334" />
-                </li>
-                <li class="horz">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://placekitten.com/g/500/336" />
-                </li>
-                <li class="horz">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://placekitten.com/g/500/333" />
-                </li>
-                <li class="horz">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://placekitten.com/g/500/500" />
-                </li>
-                <li class="horz">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://placekitten.com/g/333/500" />
-                </li>
-                <li class="horz">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://placekitten.com/g/333/500" />
-                </li>
-                <li class="horz">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://placekitten.com/g/333/500" />
-                </li>
-                <li class="horz">
-                    <a href="#">
-                        <span class="spacer"></span>
-                        <div class="product-meta">
-                            <h2>Blue Jeans</h2>
-                            <p>500 Eur</p>
-                        </div>
-                    </a>
-                    <img src="http://placekitten.com/g/333/500" />
-                </li>
 
             </ul>
         </section>
@@ -720,7 +628,15 @@
         <div id="product-images">
           <div class="rotation">
             {{#primary_image}}
+            <div class="rotation-ship">
+            <div class="main-image slide">
               <img src="{{url-500}}" data-1000="{{url-1000}}" />
+            </div>
+            <div class="hide slide">
+              <img src="{{url-500}}" data-1000="{{url-1000}}" />
+            </div>
+            </div>
+
             {{/primary_image}}
           </div>
           <div id="arrow_r" class="image-nav">
@@ -735,14 +651,9 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>
+            var slide = 0;
             $(function() {
               $("body").addClass("js");
-
-              $("header h1").hover(function(){
-                  $("html").css("background-color", "#FFECEC");
-              }, function() {
-                  $("html").css("background-color", "#FFF");
-              });
 
               $(".page-header").clone().prependTo('body').attr('id','imposter');
               $(".product-list img.unloaded").css('opacity',0);
@@ -789,6 +700,23 @@
                 });
               });
 
+
+              $("#arrow_r").click(function(){
+                slide ++;
+                if(slide == 2) {
+                  slide = 0;
+                }
+                $(".rotation-ship").css("left",-($(window).width() * slide));
+              });
+
+              $("#arrow_l").click(function(){
+                slide --;
+                if(slide == -1) {
+                  slide = 1;
+                }
+                $(".rotation-ship").css("left",-($(window).width() * slide));
+              });
+
               function setImgSrc(img) {
                 if(img.width() > 500 || img.height() > 500) {
                   img.attr('src',img.attr('data-1000'));
@@ -816,6 +744,8 @@
                     });
                   }               
               }
+
+
 
               
             });
