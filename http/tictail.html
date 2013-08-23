@@ -113,7 +113,7 @@
                 vertical-align: middle;
             }
 
-            .js .product-list img {
+            .js .product-list img.loaded {
               -webkit-transition: opacity 1s;
               -moz-transition: opacity 1s;
               -o-transition: opacity 1s;
@@ -230,16 +230,11 @@
             }
 
             .product-list li {
-                margin: 0 5% 10%;
-                width: 80%;
+                margin: 0 3% 10%;
+                width: 94%;
                 display: inline-block;
                 vertical-align: middle;
                 position: relative;
-            }
-
-            .product-list li.vert {
-                margin: 0 4% 10%;
-                width: 35.6%;
             }
 
             .product-list li a {
@@ -321,11 +316,10 @@
               text-align: center;
             }
 
-            #product-images img {
-              width: auto;
+            #product-images .rotation img {
+              width: 60%;
               height: auto;
               max-width: 300px;
-              max-height: 500px;
             }
 
 
@@ -368,13 +362,31 @@
                     font-size: 1.4rem;
                 }
 
-                #product-images img {
+                #product-images .rotation img {
+                  width: 70%;
+                  max-width: 1000px;
+                }
+
+                .image-nav {
+                  position: fixed;
+                  width: 15%;
+                  top: calc(50% - 25px);
+                  height: 50px;
+                  text-align: center;
+                }
+
+                .image-nav img {
+                  height: 100%;
                   width: auto;
-                  height: auto;
-                  max-width: 380px;
-                  max-height: 400px;
+                }
+
+                #arrow_r {
+                  right: 0;
                 }
                 
+                #arrow_l {
+                  left: 0;
+                }
             }
 
             @media only screen and (min-width: 768px) {
@@ -396,7 +408,7 @@
                 .product-list li {
                     margin: 0 3.26% 8%;
                     width: 43.25%;
-                    max-width: 500px;
+                    max-width: 1000px;
                 }
 
                 .product-list li.vert {
@@ -414,11 +426,9 @@
                     font-size: 1.4rem;
                 }
 
-                #product-images img {
-                  width: auto;
-                  height: auto;
-                  max-width: 500px;
-                  max-height: 600px;
+                .image-nav {
+                  top: calc(50% - 30px);
+                  height: 60px;
                 }
 
             }
@@ -449,26 +459,10 @@
                     font-size: 1.6rem;
                 }
 
-                #product-images img {
-                  width: auto;
-                  height: auto;
-                  max-width: 1000px;
-                  max-height: 800px;
+                .image-nav {
+                  top: calc(50% - 35px);
+                  height: 70px;
                 }
-
-            }
-
-            @media only screen and (min-width: 1500px) {
-              .product-list li {
-                    margin: 0 3.26% 8%;
-                    width: 26.5%;
-                }
-
-              .product-list li.vert {
-                  margin: 0 3.26% 8%;
-                  width: 26.5%;
-              }
-
             }
 
             /* ==========================================================================
@@ -579,7 +573,7 @@
                             </div>
                         </a>
                         {{#primary_image}}
-                            <img src="{{url-500}}" />
+                            <img src="{{url-500}}" data-1000="{{url-1000}}" class="unloaded" />
                         {{/primary_image}}
                     </li>
 
@@ -722,10 +716,19 @@
 
         {{#product_page}}
         {{#product}}
+        
         <div id="product-images">
-          {{#primary_image}}
-            <img src="{{url-1000}}" />
-          {{/primary_image}}
+          <div class="rotation">
+            {{#primary_image}}
+              <img src="{{url-500}}" data-1000="{{url-1000}}" />
+            {{/primary_image}}
+          </div>
+          <div id="arrow_r" class="image-nav">
+            <img src="http://andrevvm.github.io/highline/http/img/arrow_r.png" />
+          </div>
+          <div id="arrow_l" class="image-nav">
+            <img src="http://andrevvm.github.io/highline/http/img/arrow_l.png" />
+          </div>
         </div>
         {{/product}}
         {{/product_page}}
@@ -742,15 +745,25 @@
               });
 
               $(".page-header").clone().prependTo('body').attr('id','imposter');
-
+              $(".product-list img.unloaded").css('opacity',0);
               $(".product-list img").each(function() {
+
+                var $img    = $(this);
+                var img_h   = $img.height();
+                var img_w   = $img.width();
+
+                if($img.closest('li').width() > 400) {
+                  
+                    $img.attr('src',$img.attr('data-1000'));
+
+                }
                 
-                $(this).css("opacity", 0);
-                $(this).one('load', function() {
-                  $(this).css("opacity",1);
-                    if($(this).height() / $(this).width() >= 1.25) {
-                        $(this).closest("li").removeClass("horz").addClass("vert");
-                    }
+                $img.one('load', function() {
+                  $img.removeClass("unloaded").addClass("loaded").css("opacity",1);
+                  if(img_h / img_w >= 1.1) {
+                      $img.closest("li").removeClass("horz").addClass("vert");
+                  }
+                  
                 }).each(function() {
                   if(this.complete) $(this).load();
                 });
@@ -761,6 +774,48 @@
                
 
               });
+
+              $("#product-images img").each(function() {
+                var $img    = $(this);
+                var img_h   = $img.height();
+                var img_w   = $img.width();
+
+                $img.css("opacity", 0);
+                setImgSrc($img);
+                $img.one('load', function() {
+                  $img.css("opacity",1);
+                }).each(function() {
+                  if(this.complete) $(this).load();
+                });
+              });
+
+              function setImgSrc(img) {
+                if(img.width() > 500 || img.height() > 500) {
+                  img.attr('src',img.attr('data-1000'));
+                }
+              }
+
+              var rtime = new Date(1, 1, 2000, 12,00,00);
+              var timeout = false;
+              var delta = 200;
+              $(window).resize(function() {
+                  rtime = new Date();
+                  if (timeout === false) {
+                      timeout = true;
+                      setTimeout(resizeend, delta);
+                  }
+              });
+
+              function resizeend() {
+                  if (new Date() - rtime < delta) {
+                      setTimeout(resizeend, delta);
+                  } else {
+                    timeout = false;
+                    $(".product-list img").each(function() {
+                      setImgSrc($(this));
+                    });
+                  }               
+              }
 
               
             });
