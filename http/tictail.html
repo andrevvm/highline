@@ -93,6 +93,7 @@
             h1 a:hover {
                 text-decoration: none;
                 background: #FFF;
+                color: black;
             }
 
             ::-moz-selection {
@@ -455,11 +456,11 @@
               -webkit-appearance: none;
               -moz-appearance: none;
               display: block;
-              padding: 1em 1em 1em 1em;
+              padding: 1em;
               box-sizing:border-box;
               -moz-box-sizing:border-box;
               border: 1px solid black;
-              border-top: none;
+              border-bottom: none;
               position: relative;
               font-size: 14px;
               font-size: 1.4rem;
@@ -479,13 +480,66 @@
               color: white;
             }
 
-            .product-actions li:first-child {
-              border-top: 1px solid black;
+            .product-actions li.cart button {
+              border-top: 0;
+            }
+
+            .product-actions li:last-child {
+              border-bottom: 1px solid black;
+            }
+
+            .product-actions li.variation {
+              padding: 0;
+              position: relative;
+            }
+
+            li.variation input[type=radio] {
+              position: absolute;
+              left: -9000px;
+            }
+
+            li.variation + li {
+              border-top: 0;
+            }
+
+            li.variation label {
+              width: 100%;
+              display: block;
+              border-bottom: 1px solid black;
+              padding: 1em;
+              box-sizing: border-box;
+              cursor: pointer;
+              display: none;
+            }
+
+            li.variation input:checked + label {
+              display: block;
+              background-image: url(img/icon-select.png) 95% center;
+            }
+
+            li.variation:hover label {
+              display: block;
+              background: black;
+              color: white;
+            }
+
+            li.variation label:hover {
+              background-color: #333;
             }
 
             li.variation.unavailable {
               border-color: #ccc;
               color: #ccc;
+            }
+
+            .product-actions li.variation:hover {
+              position: absolute;
+              z-index: 5;
+            }
+
+            .product-actions li.variation:hover ~ li {
+              position: relative;
+              top: 4em;
             }
 
 
@@ -657,6 +711,7 @@
                 #product-details .sec-col {
                   width: 32%;
                   float: right;
+                  position: relative;
                 }
 
             }
@@ -854,17 +909,20 @@
         </div>
         <div id="product-details">
           <div class="sec-col">
-            {{#add_to_cart}}
+            
             <ul class="product-actions">
-              {{#variations}}
-                <li class="variation">{{label}}</li>
-              {{/variations}}
-              <li class="cart">{{#add_to_cart_button}}Add to cart{{/add_to_cart_button}}</li>
               {{#out_of_stock}}
-              <li class="variation unavailable">Unavailable</li>
+              <li class="variation unavailable"><label>Unavailable</label></li>
               {{/out_of_stock}}
+              {{#add_to_cart}}
+              
+              <li class="variation">{{#variations_radio}}{{variations_radio}}{{/variations_radio}}</li>
+              
+              <li class="cart">{{#add_to_cart_button}}Add to cart{{/add_to_cart_button}}</li>
+              {{/add_to_cart}}
             </ul>
-            {{/add_to_cart}}
+            
+
           </div>
           <div class="main-col">
             <h2>{{title}}</h2>
