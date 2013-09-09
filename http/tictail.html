@@ -695,10 +695,45 @@
               right: 100px;
             }
 
+            #header-actions {
+              position: fixed;
+              top: 30px;
+              left: 30px;
+            }
 
-            /* ==========================================================================
-               Media Queries
-               ========================================================================== */
+            #header-actions .action-icon {
+              float: left;
+              margin-right: 20px;
+              width: 30px;
+              height: 30px;
+              background-size: 30px;
+              opacity: 0.3;
+              cursor: pointer;
+              text-indent: -9000px;
+            }
+
+            #header-actions .action-icon:hover {
+              opacity: 0.6;
+            }
+
+            #header-actions .action-icon:active {
+              opacity: 0.9;
+            }
+
+            .icon-search {
+              background: url(http://andrevvm.github.io/highline/http/img/icon-search.png);
+            }
+
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+                .icon-search {
+                  background: url(http://andrevvm.github.io/highline/http/img/icon-search@2x.png);
+                }
+            }
+
+
+          /* ==========================================================================
+             Media Queries
+             ========================================================================== */
 
             @media only screen and (min-width: 480px) {
 
@@ -1092,11 +1127,22 @@
         </div>
         {{/product}}
         {{/product_page}}
+
+        <div id="header-actions">
+          <label for="search-check" class="icon-search action-icon">
+            Search
+          </label>
+        </div>
+
+        
+
         <input id="search-check" type="checkbox" />
         <div id="search" class="border">
           {{search}}
-          <label id="search-close" for="search-check">close</label>
+          <label id="search-close" class="action-icon" for="search-check">close</label>
         </div>
+
+
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>
