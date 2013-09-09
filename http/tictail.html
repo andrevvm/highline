@@ -607,9 +607,8 @@
             }
 
             #search-check {
-              position: fixed;
-              top: 100px;
-              left: 100px;
+              position: absolute;
+              left: -9000px;
             }
 
             #search-check:checked + #search {
@@ -691,8 +690,8 @@
 
             #search-close {
               position: fixed;
-              top: 100px;
-              right: 100px;
+              top: 30px;
+              left: 30px;
             }
 
             #header-actions {
@@ -701,32 +700,31 @@
               left: 30px;
             }
 
-            #header-actions .action-icon {
+            .action-icon {
               float: left;
               margin-right: 20px;
               width: 30px;
               height: 30px;
               background-size: 30px;
-              opacity: 0.3;
+              opacity: 1;
               cursor: pointer;
               text-indent: -9000px;
             }
 
-            #header-actions .action-icon:hover {
-              opacity: 0.6;
-            }
-
-            #header-actions .action-icon:active {
-              opacity: 0.9;
-            }
-
             .icon-search {
-              background: url(http://andrevvm.github.io/highline/http/img/icon-search.png);
+              background-image: url(http://andrevvm.github.io/highline/http/img/icon-search.png);
+            }
+
+            .icon-close {
+              background-image: url(http://andrevvm.github.io/highline/http/img/icon-close.png);
             }
 
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
                 .icon-search {
-                  background: url(http://andrevvm.github.io/highline/http/img/icon-search@2x.png);
+                  background-image: url(http://andrevvm.github.io/highline/http/img/icon-search@2x.png);
+                }
+                .icon-close {
+                  background-image: url(http://andrevvm.github.io/highline/http/img/icon-close@2x.png);
                 }
             }
 
@@ -1139,7 +1137,7 @@
         <input id="search-check" type="checkbox" />
         <div id="search" class="border">
           {{search}}
-          <label id="search-close" class="action-icon" for="search-check">close</label>
+          <label id="search-close" class="icon-close action-icon" for="search-check">close</label>
         </div>
 
 
