@@ -344,11 +344,11 @@
               z-index: 100;
               width: 10000%;
               height: 100%;
-              -webkit-transition: left .5s;
-              -moz-transition: left .5s;
-              -o-transition: left .5s;
-              -ms-transition: left .5s;
-              transition: left .5s;
+              -webkit-transition: left .7s cubic-bezier(.82,0,.02,1.05);
+              -moz-transition: left .7s cubic-bezier(.82,0,.02,1.05);
+              -o-transition: left .7s cubic-bezier(.82,0,.02,1.05);
+              -ms-transition: left .7s cubic-bezier(.82,0,.02,1.05);
+              transition: left .7s cubic-bezier(.82,0,.02,1.05);
             }
 
             .rotation .slide {
@@ -365,8 +365,11 @@
               z-index: 1000;
               min-height: 300px;
               max-width: 1000px;
-              border-top: 1px solid rgba(0,0,0,0.2);
+              border-top: 1px solid rgba(0,0,0,0.1);
               padding-bottom: 140px;
+              content: "";
+              display: table;
+              clear: both;
             }
 
             #product-details.anim {
@@ -490,6 +493,17 @@
               background-repeat: no-repeat;
             }
 
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+                .product-actions li.cart button:hover {
+                  background-image: url(http://andrevvm.github.io/highline/http/img/icon-plus-white@2x.png);
+                  background-size: 13px;
+                }
+                .product-actions li.cart button {
+                  background-image: url(http://andrevvm.github.io/highline/http/img/icon-plus@2x.png);
+                  background-size: 13px;
+                }
+            }
+
             .product-actions li:last-child {
               border-bottom: 1px solid black;
             }
@@ -509,7 +523,7 @@
             }
 
             li.variation label {
-              width: 100%;
+              width: auto;
               display: block;
               border-bottom: 1px solid black;
               padding: 1em;
@@ -518,6 +532,8 @@
               display: none;
             }
 
+
+
             li.variation input:checked + label {
               display: block;
               background-image: url(http://andrevvm.github.io/highline/http/img/icon-select.png);
@@ -525,8 +541,16 @@
               background-repeat: no-repeat;
             }
 
+
             li.variation:hover input:checked + label {
               background-image: url(http://andrevvm.github.io/highline/http/img/icon-check.png);
+            }
+
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+                li.variation input:checked + label {
+                  background-image: url(http://andrevvm.github.io/highline/http/img/icon-select@2x.png);
+                  background-size: 11px;
+                }
             }
 
             li.variation:hover label {
@@ -537,6 +561,10 @@
 
             li.variation label:hover {
               background-color: #000;
+            }
+
+            li.variation label:active {
+              background-color: #333;
             }
 
             li.variation.unavailable {
@@ -554,6 +582,114 @@
               top: 4em;
             }
 
+            #tictail_search {
+              height: 100%;
+            }
+
+            #search {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(0,0,0,0.9);
+              z-index: 1000;
+              overflow: auto;
+              opacity: 0;
+              left: -1000%;
+              -webkit-transition: opacity, left;
+              -webkit-transition-duration: 200ms, 0ms;
+              -webkit-transition-delay: 0, 200ms;
+            }
+
+            #search-check {
+              position: fixed;
+              top: 100px;
+              left: 100px;
+            }
+
+            #search-check:checked + #search {
+              opacity: 1;
+              left: 0;
+              -webkit-transition: opacity, left;
+              -webkit-transition-duration: 200ms, 0ms;
+              -webkit-transition-delay: 0ms, 0ms;
+            }
+
+
+            #search input {
+              font-family: "Playfair Display", "Times New Roman", Times, serif;
+              font-weight: 400;
+              color: #f6f3f3;
+              display: block;
+              width: 70%;
+              margin: 0 auto;
+              position: relative;
+              top: 20%;
+              height: 80px;
+              font-size: 54px;
+              background: none;
+              border: 0;
+              border-bottom: 1px solid #c6c3c3;
+
+            }
+
+            #search input:focus {
+              outline: none;
+            }
+
+            #tictail_search_results {
+              color: white;
+              position: relative;
+              top: 24%;
+              text-align: center;
+              font-size: 24px;
+            }
+
+            #search .result {
+              display: block;
+              width: 70%;
+              margin: 1px auto;
+              line-height: 80px;
+              text-indent: 20px;
+              text-align: left;
+            }
+
+            #search .thumb {
+              position: relative;
+              top: -4px;
+            }
+
+            #search .title {
+              padding-left: 20px;
+              font-family: "Playfair Display", "Times New Roman", Times, serif;
+              font-weight: 400;
+            }
+
+            #search .price {
+              float: right;
+              font-size: .8em;
+              margin-right: 20px;
+            }
+
+            #search a {
+              background-color: #f3f0f0;
+            }
+
+            #search a:hover {
+              background-color: white;
+              text-decoration: none;
+            }
+
+            #search .no-results {
+              color: #666;
+            }
+
+            #search-close {
+              position: fixed;
+              top: 100px;
+              right: 100px;
+            }
 
 
             /* ==========================================================================
@@ -952,6 +1088,11 @@
         </div>
         {{/product}}
         {{/product_page}}
+        <input id="search-check" type="checkbox" />
+        <div id="search" class="border">
+          {{search}}
+          <label id="search-close" for="search-check">close</label>
+        </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>
@@ -1000,8 +1141,7 @@
                   if(slide == img_c) {
                     slide = 0;
                   }
-                  $(".rotation-ship").css("left",-($(window).width() * slide));
-                  $("#product-details").css('top', $(".rotation img:eq("+slide+")").height() + 30);
+                  animProduct();
                 }
 
                 function prevImg() {
@@ -1009,8 +1149,7 @@
                   if(slide == -1) {
                     slide = img_c - 1;
                   }
-                  $(".rotation-ship").css("left",-($(window).width() * slide));
-                  $("#product-details").css('top', $(".rotation img:eq("+slide+")").height() + 30);
+                  animProduct();
                 }
 
                 $(document).keyup(function(){
@@ -1085,6 +1224,17 @@
                   }
               });
 
+              $(document).keyup(function(event) {
+                if (event.which == 27) {
+                  $("#search-check").attr("checked", false);
+                }
+              });
+
+              function animProduct() {
+                $(".rotation-ship").css("left",-($(window).width() * slide));
+                $("#product-details").css('top', $(".rotation img:eq("+slide+")").height() + 30);
+              }
+
               function resizeend() {
                   if (new Date() - rtime < delta) {
                       setTimeout(resizeend, delta);
@@ -1093,7 +1243,11 @@
                     $(".product-list img").each(function() {
                       setImgSrc($(this));
                     });
-                  }               
+                    animProduct();
+                  }             
+
+                  
+
               }
 
 
