@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js">
     <head>
-        <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,900|Lato:300' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,900|Lato:400' rel='stylesheet' type='text/css'>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>
@@ -47,7 +47,7 @@
             body {
                 line-height: 1.4;
                 font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-                font-weight: 300;
+                font-weight: 400;
                 color: #202020;
                 min-width: 320px;
                 margin: 0;
@@ -493,7 +493,7 @@
               background: transparent;
               width: 100%;
               font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-              font-weight: 300;
+              font-weight: 400;
               text-align: left;
               margin: 0;
             }
@@ -1292,6 +1292,7 @@
               <li class="variation {{#variations}}variation-{{position}} {{/variations}}">{{#variations_radio}}{{variations_radio}}{{/variations_radio}}</li>
               
               <li class="cart">{{#add_to_cart_button}}Add to cart{{/add_to_cart_button}}</li>
+              {{shipping_destinations}}
               {{/add_to_cart}}
             </ul>
             
