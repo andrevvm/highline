@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js">
     <head>
-        <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,900|Lato:400' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,900|Lato:300' rel='stylesheet' type='text/css'>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>
@@ -47,7 +47,7 @@
             body {
                 line-height: 1.4;
                 font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-                font-weight: 400;
+                font-weight: 300;
                 color: #202020;
                 min-width: 320px;
                 margin: 0;
@@ -493,7 +493,7 @@
               background: transparent;
               width: 100%;
               font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-              font-weight: 400;
+              font-weight: 300;
               text-align: left;
               margin: 0;
             }
@@ -627,7 +627,8 @@
               height: 100%;
             }
 
-            #search {
+            #search,
+            #info {
               position: fixed;
               top: 0;
               left: 0;
@@ -640,21 +641,22 @@
               left: -1000%;
               -webkit-transition: opacity, left;
               -webkit-transition-duration: 200ms, 0ms;
-              -webkit-transition-delay: 200ms, 200ms;
+              -webkit-transition-delay: 200ms, 400ms;
               -moz-transition: opacity, left;
               -moz-transition-duration: 200ms, 0ms;
-              -moz-transition-delay: 200ms, 200ms;
+              -moz-transition-delay: 200ms, 400ms;
               -o-transition: opacity, left;
               -o-transition-duration: 200ms, 0ms;
-              -o-transition-delay: 200ms, 200ms;
+              -o-transition-delay: 200ms, 400ms;
             }
 
-            #search-check {
+            #search-check, #info-check {
               position: absolute;
               left: -9000px;
             }
 
-            #search-check:checked ~ #search {
+            #search-check:checked ~ #search,
+            #info-check:checked ~ #info {
               opacity: 1;
               left: 0;
               -webkit-transition: opacity, left;
@@ -668,17 +670,47 @@
               -o-transition-delay: 0ms, 0ms;
             }
 
-            #search-check:checked ~ #search input {
+            #info div {
+
+            }
+
+            #search-check:checked ~ #search input,
+            #info-check:checked ~ #info .html_content {
               opacity: 1;
               -webkit-transition: opacity 200ms 200ms;
               -moz-transition: opacity 200ms 200ms;
               -o-transition: opacity 200ms 200ms;
+              transition: opacity 200ms 200ms;
             }
 
-            #search-check:checked ~ #header-actions .icon-search {
+            #search-check:checked ~ #header-actions .icon-search,
+            #info-check:checked ~ #header-actions .icon-info {
               opacity: 0;
               -webkit-transition: opacity 200ms;
               -webkit-transition-delay: 0ms;
+            }
+
+            #info-check:checked ~ header {
+              z-index: 10000;
+              -webkit-transition: z-index 0ms 0ms;
+            }
+
+            header {
+              -webkit-transition: z-index 0ms 400ms;
+            }
+
+            #info-check:checked ~ header nav {
+                opacity: 0;
+                -webkit-transition: opacity 200ms 0ms;
+                -moz-transition: opacity 200ms 0ms;
+                -o-transition: opacity 200ms 0ms;
+                transition: opacity 200ms 0ms;
+              }
+
+            header nav {
+              opacity: 1;
+              -webkit-transition: opacity 200ms 400ms;
+              transition: opacity 200ms 400ms;
             }
 
 
@@ -765,6 +797,33 @@
               z-index: 10005;
             }
 
+            #info-close {
+              position: fixed;
+              top: 20px;
+              left: 40px;
+              z-index: 10005;
+            }
+
+            #info {
+              background: rgba(255,255,255,0.9);
+              overflow: auto;
+            }
+
+            #info .html_content {
+              opacity: 0;
+              margin: 0 auto;
+              font-size: 24px;
+              width: 50%;
+              line-height: 1.5em;
+              position: relative;
+              top: 110px;
+              text-align: center;
+              -webkit-transition: opacity 200ms 0ms;
+              -moz-transition: opacity 200ms 0ms;
+              -o-transition: opacity 200ms 0ms;
+              transition: opacity 200ms 0ms;
+            }
+
             #header-actions {
               position: fixed;
               top: 20px;
@@ -797,6 +856,10 @@
               background-image: url(http://andrevvm.github.io/highline/http/img/icon-close.png);
             }
 
+            .icon-close-black {
+              background-image: url(http://andrevvm.github.io/highline/http/img/icon-close-black.png);
+            }
+
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
                 .icon-search {
                   background-image: url(http://andrevvm.github.io/highline/http/img/icon-search@2x.png);
@@ -806,6 +869,9 @@
                 }
                 .icon-close {
                   background-image: url(http://andrevvm.github.io/highline/http/img/icon-close@2x.png);
+                }
+                .icon-close-black {
+                  background-image: url(http://andrevvm.github.io/highline/http/img/icon-close-black@2x.png);
                 }
             }
 
@@ -1210,6 +1276,8 @@
 
     </head>
     <body>
+        <input id="search-check" type="checkbox" />
+        <input id="info-check" type="checkbox" />
         <div class="border"></div>
         <header class="page-header">
             <h1><a href="{{store_url}}">{{store_name}}</a></h1>
@@ -1315,20 +1383,23 @@
         {{/product}}
         {{/product_page}}
 
-        <input id="search-check" type="checkbox" />
-
         <div id="header-actions">
           <label for="search-check" class="icon-search action-icon">
             Search
           </label>
-          <div class="icon-info action-icon">
+          <label for="info-check" class="icon-info action-icon">
             Info
-          </div>
+          </label>
         </div>
         
         <div id="search" class="border">
           {{search}}
           <label id="search-close" class="icon-close action-icon" for="search-check">close</label>
+        </div>
+
+        <div id="info" class="border">          
+          <div class="html_content">{{store_description}}</div>
+          <label id="info-close" class="icon-close-black action-icon" for="info-check">close</label>
         </div>
 
 
@@ -1338,6 +1409,10 @@
             var slide = 0;
             $(function() {
               $("body").addClass("js");
+
+              if($("#info .html_content").html().length === 0) {
+                $(".icon-info").hide();
+              }
 
               $(".page-header").clone().prependTo('body').attr('id','imposter');
               $(".page-header:eq(1)").css('position','fixed');
