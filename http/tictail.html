@@ -3,7 +3,6 @@
     <head>
         <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,900|Lato:300' rel='stylesheet' type='text/css'>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>
             {{store_name}}
             {{! Add the label of the current navigation item on list pages }}
@@ -119,12 +118,17 @@
                 vertical-align: middle;
             }
 
+            .product-list img.unloaded {
+              opacity: 0;
+            }
+
             .js .product-list img.loaded {
               -webkit-transition: opacity 1s;
               -moz-transition: opacity 1s;
               -o-transition: opacity 1s;
               -ms-transition: opacity 1s;
               transition: opacity 1s;
+              opacity: 1;
             }
 
             fieldset {
@@ -363,6 +367,7 @@
               z-index: 100;
               width: 10000%;
               height: 100%;
+              left: 0;
               -webkit-transition: left .7s cubic-bezier(.82,0,.02,1.05);
               -moz-transition: left .7s cubic-bezier(.82,0,.02,1.05);
               -o-transition: left .7s cubic-bezier(.82,0,.02,1.05);
@@ -475,10 +480,10 @@
             }
 
             .product-actions li.variation, .product-actions li.cart button {
-              appearance: none;
               -webkit-appearance: none;
               -moz-appearance: none;
               -o-appearance: none;
+              appearance: none;
               display: block;
               padding: 1em;
               box-sizing:border-box;
@@ -542,6 +547,10 @@
 
             .product-actions li.variation.open {
               -webkit-transition: height 200ms;
+              -moz-transition: height 200ms;
+              -o-transition: height 200ms;
+              -ms-transition: height 200ms;
+              transition: height 200ms;
             }
 
             li.variation input[type=radio] {
@@ -623,6 +632,12 @@
               border: 0;
             }
 
+            .shipping-destinations {
+              font-size: 12px;
+              color: #999;
+              text-align: center;
+            }
+
             #tictail_search {
               height: 100%;
             }
@@ -635,7 +650,7 @@
               width: 100%;
               height: 100%;
               background: rgba(0,0,0,0.9);
-              z-index: 1000;
+              z-index: 10000;
               overflow: auto;
               opacity: 0;
               left: -1000%;
@@ -648,6 +663,12 @@
               -o-transition: opacity, left;
               -o-transition-duration: 200ms, 0ms;
               -o-transition-delay: 200ms, 400ms;
+              -ms-transition: opacity, left;
+              -ms-transition-duration: 200ms, 0ms;
+              -ms-transition-delay: 200ms, 400ms;
+              transition: opacity, left;
+              transition-duration: 200ms, 0ms;
+              transition-delay: 200ms, 400ms;
             }
 
             #search-check, #info-check {
@@ -668,10 +689,17 @@
               -o-transition: opacity, left;
               -o-transition-duration: 200ms, 0ms;
               -o-transition-delay: 0ms, 0ms;
+              -ms-transition: opacity, left;
+              -ms-transition-duration: 200ms, 0ms;
+              -ms-transition-delay: 0ms, 0ms;
+              transition: opacity, left;
+              transition-duration: 200ms, 0ms;
+              transition-delay: 0ms, 0ms;
             }
 
-            #info div {
-
+            #info-check:checked ~ #info #info-close,
+            #search-check:checked ~ #search #search-close {
+              display: block;
             }
 
             #search-check:checked ~ #search input,
@@ -680,23 +708,41 @@
               -webkit-transition: opacity 200ms 200ms;
               -moz-transition: opacity 200ms 200ms;
               -o-transition: opacity 200ms 200ms;
+              -ms-transition: opacity 200ms 200ms;
               transition: opacity 200ms 200ms;
             }
 
-            #search-check:checked ~ #header-actions .icon-search,
-            #info-check:checked ~ #header-actions .icon-info {
+            #search-check:checked ~ #header-actions,
+            #info-check:checked ~ #header-actions {
               opacity: 0;
-              -webkit-transition: opacity 200ms;
-              -webkit-transition-delay: 0ms;
+              left: -1000%;
+              -webkit-transition: opacity 200ms, left 0ms;
+              -webkit-transition-delay: 0ms, 200ms;
+              -moz-transition: opacity 200ms, left 0ms;
+              -moz-transition-delay: 0ms, 200ms;
+              -o-transition: opacity 200ms, left 0ms;
+              -o-transition-delay: 0ms, 200ms;
+              -ms-transition: opacity 200ms, left 0ms;
+              -ms-transition-delay: 0ms, 200ms;
+              transition: opacity 200ms, left 0ms;
+              transition-delay: 0ms, 200ms;
             }
 
             #info-check:checked ~ header {
-              z-index: 10000;
+              z-index: 10005;
               -webkit-transition: z-index 0ms 0ms;
+              -moz-transition: z-index 0ms 0ms;
+              -o-transition: z-index 0ms 0ms;
+              -ms-transition: z-index 0ms 0ms;
+              transition: z-index 0ms 0ms;
             }
 
             header {
               -webkit-transition: z-index 0ms 400ms;
+              -moz-transition: z-index 0ms 400ms;
+              -o-transition: z-index 0ms 400ms;
+              -ms-transition: z-index 0ms 400ms;
+              transition: z-index 0ms 400ms;
             }
 
             #info-check:checked ~ header nav {
@@ -704,12 +750,16 @@
                 -webkit-transition: opacity 200ms 0ms;
                 -moz-transition: opacity 200ms 0ms;
                 -o-transition: opacity 200ms 0ms;
+                -ms-transition: opacity 200ms 0ms;
                 transition: opacity 200ms 0ms;
               }
 
             header nav {
               opacity: 1;
               -webkit-transition: opacity 200ms 400ms;
+              -moz-transition: opacity 200ms 400ms;
+              -o-transition: opacity 200ms 400ms;
+              -ms-transition: opacity 200ms 400ms;
               transition: opacity 200ms 400ms;
             }
 
@@ -719,12 +769,12 @@
               font-weight: 400;
               color: #f6f3f3;
               display: block;
-              width: 70%;
+              width: 80%;
               margin: 0 auto;
               position: relative;
-              top: 20%;
-              height: 80px;
-              font-size: 54px;
+              top: 15%;
+              height: 60px;
+              font-size: 36px;
               background: none;
               border: 0;
               border-bottom: 1px solid #c6c3c3;
@@ -748,11 +798,12 @@
 
             #search .result {
               display: block;
-              width: 70%;
+              width: 80%;
               margin: 1px auto;
               line-height: 80px;
               text-indent: 20px;
               text-align: left;
+              font-size: 14px;
             }
 
             #search .thumb {
@@ -790,18 +841,13 @@
               color: #666;
             }
 
-            #search-close {
+            #search-close,
+            #info-close {
               position: fixed;
               top: 20px;
               left: 20px;
               z-index: 10005;
-            }
-
-            #info-close {
-              position: fixed;
-              top: 20px;
-              left: 40px;
-              z-index: 10005;
+              display: none;
             }
 
             #info {
@@ -812,8 +858,9 @@
             #info .html_content {
               opacity: 0;
               margin: 0 auto;
-              font-size: 24px;
-              width: 50%;
+              font-size: 16px;
+              width: 80%;
+              padding-bottom: 60px;
               line-height: 1.5em;
               position: relative;
               top: 110px;
@@ -829,6 +876,8 @@
               top: 20px;
               left: 20px;
               z-index: 10000;
+              -webkit-transition: opacity 200ms, left 0ms;
+              -webkit-transition-delay: 200ms, 0ms;
             }
 
             .action-icon {
@@ -840,8 +889,7 @@
               opacity: 1;
               cursor: pointer;
               text-indent: -9000px;
-              -webkit-transition: opacity 200ms;
-              -webkit-transition-delay: 200ms;
+              
             }
 
             .icon-search {
@@ -930,6 +978,7 @@
                   display: block;
                   opacity: 0;
                   z-index: 0;
+                  margin: 10px;
                 }
 
                 h1 {
@@ -1030,7 +1079,8 @@
                   left: 0;
                 }
 
-                #search-close {
+                #search-close,
+                #info-close {
                   top: 30px;
                   left: 30px;
                 }
@@ -1046,6 +1096,26 @@
                   height: 25px;
                 }
 
+                #info .html_content {
+                  width: 50%;
+                  font-size: 20px;
+                }
+
+                .shipping-destinations {
+                  font-size: 14px;
+                }
+
+                #search input {
+                  width: 70%;
+                  top: 20%;
+                  height: 80px;
+                  font-size: 54px;
+                }
+
+                #search .result {
+                  width: 70%;
+                  font-size: 20px;
+                }
 
             }
 
@@ -1111,7 +1181,8 @@
                   position: relative;
                 }
 
-                #search-close {
+                #search-close,
+                #info-close {
                   top: 35px;
                   left: 35px;
                 }
@@ -1125,6 +1196,10 @@
                   margin-right: 18px;
                   width: 28px;
                   height: 28px;
+                }
+
+                #info .html_content {
+                  font-size: 24px;
                 }
 
             }
@@ -1184,7 +1259,8 @@
                   font-size: 4.2rem;
                 }
 
-                #search-close {
+                #search-close,
+                #info-close {
                   top: 40px;
                   left: 40px;
                 }
@@ -1280,8 +1356,14 @@
         <input id="info-check" type="checkbox" />
         <div class="border"></div>
         <header class="page-header">
-            <h1><a href="{{store_url}}">{{store_name}}</a></h1>
 
+            
+            <h1 {{#logotype}}style='display:none'{{/logotype}}><a href="{{store_url}}">{{store_name}}</a></h1>
+            {{#logotype}}
+            <h1>
+              <a href="{{store_url}}"><img src="{{url-300}}" /></a>
+            </h1>
+            {{/logotype}}
             <nav>
                 <ul>
                     {{#navigation}}
@@ -1360,9 +1442,10 @@
               <li class="variation {{#variations}}variation-{{position}} {{/variations}}">{{#variations_radio}}{{variations_radio}}{{/variations_radio}}</li>
               
               <li class="cart">{{#add_to_cart_button}}Add to cart{{/add_to_cart_button}}</li>
-              {{shipping_destinations}}
               {{/add_to_cart}}
             </ul>
+
+            <p class="shipping-destinations">{{shipping_destinations}}</p>
             
 
           </div>
@@ -1398,12 +1481,18 @@
         </div>
 
         <div id="info" class="border">          
-          <div class="html_content">{{store_description}}</div>
+          <div class="html_content">
+            {{store_description}}
+            {{#store_blog_url}}
+            <p><a href="{{store_blog_url}}">{{store_blog_url}}</a></p>
+            {{/store_blog_url}}
+            <p><a href="mailto:{{store_email}}">{{store_email}}</a></p>
+          </div>
+          
+
           <label id="info-close" class="icon-close-black action-icon" for="info-check">close</label>
         </div>
 
-
-        <script src="https://raw.github.com/desandro/imagesloaded/master/imagesloaded.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>
             var slide = 0;
@@ -1416,7 +1505,6 @@
 
               $(".page-header").clone().prependTo('body').attr('id','imposter');
               $(".page-header:eq(1)").css('position','fixed');
-              $(".product-list img.unloaded").css('opacity',0);
               $(".product-list img").each(function() {
 
                 var $img    = $(this);
@@ -1430,7 +1518,7 @@
                 $img.one('load', function() {
                   var img_h   = $img.height();
                   var img_w   = $img.width();
-                  $img.removeClass("unloaded").addClass("loaded").css("opacity",1);
+                  $img.removeClass("unloaded").addClass("loaded");
                   if(img_h / img_w >= 1.1) {
                       $img.closest("li").removeClass("horz").addClass("vert");
                   }
@@ -1540,7 +1628,7 @@
 
               $(document).keyup(function(event) {
                 if (event.which == 27) {
-                  $("#search-check").attr("checked", false);
+                  $("#search-check, #info-check").attr("checked", false);
                 }
               });
 
