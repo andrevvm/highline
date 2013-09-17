@@ -42,7 +42,6 @@
                 height: 100%;
                 width: 100%;
                 box-shadow: none;
-                z-index: 0;
             }
 
             body {
@@ -124,7 +123,7 @@
               opacity: 0;
             }
 
-            .product-list img {
+            .js .product-list img.loaded {
               -webkit-transition: opacity 1s;
               -moz-transition: opacity 1s;
               -o-transition: opacity 1s;
@@ -356,8 +355,6 @@
               text-align: center;
               position: absolute;
               width: 100%;
-              top: 0;
-              z-index: 200;
             }
 
             .rotation {
@@ -370,7 +367,7 @@
               position: relative;
               z-index: 100;
               width: 10000%;
-              height: 80%;
+              height: 100%;
               left: 0;
               -webkit-transition: left .7s cubic-bezier(.82,0,.02,1.05);
               -moz-transition: left .7s cubic-bezier(.82,0,.02,1.05);
@@ -382,25 +379,19 @@
             .rotation .slide {
               float: left;
               width: 1%;
-              background: no-repeat center;
-              background-size: contain;
-            }
-
-            .slide a {
-              display: none;
             }
 
             #product-details {
+              width: 90%;
               margin: 0 auto;
-              position: absolute;
-              z-index: 10;
-              min-height: 100px;           
-              width: 100%;
-              padding: 30px 20% 140px;
-              top: 80%;
-            }
-
-            #product-details:after {
+              position: relative;
+              top: 1000px;
+              padding-top: 30px;
+              z-index: 1000;
+              min-height: 100px;
+              max-width: 1000px;
+              border-top: 1px solid rgba(0,0,0,0.1);
+              padding-bottom: 140px;
               content: "";
               display: table;
               clear: both;
@@ -986,13 +977,12 @@
             }
 
             #product-images .rotation img {
-              height: 100%;
-              width: auto;
+              width: 90%;
             }
 
             #product-images .rotation img.vert {
-              height: 100%;
-              width: auto;
+              width: 90%;
+              height: auto;
             }
 
             .image-nav {
@@ -1080,12 +1070,14 @@
                 }
 
                 #product-images .rotation img {
-                  height: 100%;
-                  width: auto;
+                  width: 60%;
+                  max-width: 1000px;
+                  height: auto;
                 }
 
                 #product-images .rotation img.vert {
-                  height: 100%;
+                  height: 70%;
+                  max-height: 800px;
                   width: auto;
                 }
 
@@ -1484,7 +1476,7 @@
             
             <div class="rotation-ship">
             {{#all_images}}
-            <div class="main-image slide" style="background-image: url({{url-500}})">
+            <div class="main-image slide">
               <a href="{{url-2000}}" class="fullscreen fullscreen_image">
                 <img src="{{url-500}}" data-1000="{{url-1000}}" />
               </a>
@@ -1659,11 +1651,11 @@
                       $img.addClass('vert');
                     }
 
-                    // if($img.closest('.slide').index() === 0) {
-                    //   $("#product-details").css({
-                    //     'top': $img.height() + 30
-                    //   }).addClass('anim');
-                    // }
+                    if($img.closest('.slide').index() === 0) {
+                      $("#product-details").css({
+                        'top': $img.height() + 30
+                      }).addClass('anim');
+                    }
 
                     if($img.closest('.slide').index() === 1) {
                       $("#arrow_r").addClass('anim');
@@ -1715,7 +1707,7 @@
 
               function animProduct() {
                 $(".rotation-ship").css("left",-($(window).width() * slide));
-                //$("#product-details").css('top', $(".rotation img:eq("+slide+")").height() + 30);
+                $("#product-details").css('top', $(".rotation img:eq("+slide+")").height() + 30);
               }
 
               function resizeend() {
