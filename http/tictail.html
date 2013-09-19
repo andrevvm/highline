@@ -405,6 +405,15 @@
               overflow: hidden;
             }
 
+            #product-images .rotation img {
+              opacity: 0;
+              -webkit-transition: opacity 1s;
+              -moz-transition: opacity 1s;
+              -o-transition: opacity 1s;
+              -ms-transition: opacity 1s;
+              transition: opacity 1s;
+            }
+
             .rotation {
               width: 100%;
               overflow: hidden;
@@ -439,7 +448,7 @@
               min-height: 100px;
               max-width: 1000px;
               border-top: 1px solid rgba(0,0,0,0.1);
-              padding-bottom: 140px;
+              padding-bottom: 50px;
               content: "";
               display: table;
               clear: both;
@@ -470,9 +479,11 @@
               font-size: 3.8rem;
               line-height: 1.1em;
               margin: 0 0 5px;
+              text-align: center;
             }
 
-            #product-details p {
+            #product-details p,
+            #product-details .main-col {
               line-height: 1.5em;
             }
 
@@ -497,6 +508,7 @@
               margin: 0.5em 0 1em;
               text-transform: uppercase;
               letter-spacing: 0.1em;
+              text-align: center;
             }
 
             #product-details .price p.out-of-stock {
@@ -1076,6 +1088,21 @@
             }
 
 
+            .info-links {
+              clear: both;
+              font-size: 14px;
+              text-align: center;
+              padding: 40px 0 80px;
+            }
+
+            .info-links a {
+              margin: 0 10px;
+              color: #999;
+            }
+
+            .info-links a:hover {
+              color: black;
+            }
 
 
           /* ==========================================================================
@@ -1116,6 +1143,7 @@
                   display: block;
                   opacity: 0;
                   z-index: 0;
+                  visibility: hidden;
                   margin-bottom: 30px;
                 }
 
@@ -1144,6 +1172,14 @@
                     font-size: 14px;
                     font-size: 1.4rem;
                     padding-top: 8px;
+                }
+
+                #product-details h2 {
+                  text-align: left;
+                }
+
+                #product-details .price p {
+                  text-align: left;
                 }
 
                 #product-details {
@@ -1233,6 +1269,10 @@
 
                 #tictail_search_results {
                   width: 70%;
+                }
+
+                .info-links {
+                  padding-bottom: 40px;
                 }
 
             }
@@ -1391,7 +1431,8 @@
                   font-size: 1.6rem;
                 }
 
-                #product-details p {
+                #product-details p,
+                #product-details .main-col {
                   font-size: 18px;
                   font-size: 1.8rem;
                 }
@@ -1548,6 +1589,10 @@
 
             </ul>
         </section>
+        <div class="info-links">
+          {{#return_policy}}Return policy{{/return_policy}}
+          {{#terms}}Terms &amp; conditions{{/terms}}
+        </div>
         {{/list_page}}
 
         {{#product_page}}
@@ -1571,7 +1616,10 @@
             <img src="http://andrevvm.github.io/highline/http/img/arrow_r.png" />
           </div>
           <div id="arrow_l" class="image-nav">
+            
             <img src="http://andrevvm.github.io/highline/http/img/arrow_l.png" />
+
+
           </div>
         </div>
         <div id="product-details">
@@ -1590,7 +1638,6 @@
             </ul>
 
             <p class="shipping-destinations">{{shipping_destinations}}</p>
-            
 
           </div>
           <div class="main-col">
@@ -1605,10 +1652,14 @@
             </div>
             <p>{{description}}</p>
           </div>
-          
+          <div class="info-links">
+            {{#return_policy}}Return policy{{/return_policy}}
+            {{#terms}}Terms &amp; conditions{{/terms}}
+          </div>
         </div>
         {{/product}}
         {{/product_page}}
+
 
         <div id="header-actions">
           <label for="search-check" class="icon-search action-icon">
@@ -1717,11 +1768,10 @@
 
                   var $img    = $(this);
 
-                  $img.css("opacity", 0);
                   setImgSrc($img);
                   $img.one('load', function() {
 
-                    $img.css("opacity",1);
+                    
                     var img_h   = $img.css({
                       'width':'auto',
                       'height':'auto'
@@ -1734,6 +1784,8 @@
                     if(img_h / img_w >= 1.1) {
                       $img.addClass('vert');
                     }
+
+                    $img.css("opacity",1);
 
                     if($img.closest('.slide').index() === 0) {
                       $("#product-details").css({
@@ -1794,7 +1846,7 @@
                 }
               });
 
-              $("#tictail_search_box").attr("placeholder", "Search");
+              $("#tictail_search_box").attr("placeholder", $('.placeholder').val());
 
               $("#search-check").change(function() {
                 if(this.checked) {
