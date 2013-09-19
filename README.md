@@ -1,2 +1,4 @@
-highline
+Highline
 ========
+
+A fancy Tictail theme.
