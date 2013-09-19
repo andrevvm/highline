@@ -42,11 +42,11 @@
 
             header.fade:hover {
               opacity: 1;
-              -webkit-transition: opacity 0s;
-              -moz-transition: opacity 0s;
-              -o-transition: opacity 0s;
-              -ms-transition: opacity 0s;
-              transition: opacity 0s;
+              -webkit-transition: opacity .5s;
+              -moz-transition: opacity .5s;
+              -o-transition: opacity .5s;
+              -ms-transition: opacity .5s;
+              transition: opacity .5s;
             }
 
             .border:before,
@@ -677,6 +677,29 @@
               display: block;
               background: #222;
               color: white;
+            }
+
+            li.variation.open label.out-of-stock {
+              background: #ddd;
+              color: white;
+              position: relative;
+            }
+
+            li.variation.open .out-of-stock-text {
+              position: absolute;
+              top: 1em;
+              left: 1em;
+              display: none;
+              color: #FF4040;
+            }
+
+            li.variation.open label.out-of-stock:hover {
+              background: #eee;
+              color: #eee;
+            }
+
+            li.variation.open label.out-of-stock:hover .out-of-stock-text {
+              display: block;
             }
 
             li.variation label:hover {
@@ -1535,12 +1558,17 @@
 
     </head>
     <body>
+<!-- These inputs are extremely important. Enable JS-free search & info overlays -->
         <input id="search-check" type="checkbox" />
         <input id="info-check" type="checkbox" />
-        <div class="border"><div class="border-inner"></div></div>
-        <header class="page-header">
+<!-- Don't touch these! ^^^ -->
 
-            
+<!-- Adds black border around window. Safe to remove. -->
+        <div class="border"><div class="border-inner"></div></div>
+<!-- End border -->
+
+<!-- Start Page Header -->
+        <header class="page-header">
             <h1 {{#logotype}}style='display:none'{{/logotype}}><a href="{{store_url}}">{{store_name}}</a></h1>
             {{#logotype}}
             <h1>
@@ -1562,6 +1590,9 @@
                 </ul>
             </nav>
         </header>
+<!-- End Page Header -->
+
+<!-- Start Product List -->
         {{#list_page}}
         <section class="product-list">
             <ul>
@@ -1594,7 +1625,9 @@
           {{#terms}}Terms &amp; conditions{{/terms}}
         </div>
         {{/list_page}}
+<!-- End Product List -->
 
+<!-- Start Product Page -->
         {{#product_page}}
         {{#product}}
         
@@ -1631,7 +1664,17 @@
               {{/out_of_stock}}
               {{#add_to_cart}}
               
-              <li class="variation {{#variations}}variation-{{position}} {{/variations}}">{{#variations_radio}}{{variations_radio}}{{/variations_radio}}</li>
+              <li class="variation {{#variations}}variation-{{position}} {{/variations}}">{{#variations_radio}}{{variations_radio}}{{/variations_radio}}
+              {{#variations}}
+                {{#out_of_stock}}
+                  <input type="radio" name="variation_id" id="{{identifier}}" disabled class="tictail_radio tictail_variation_radio">
+                  <label for="{{identifier}}" class="tictail_label tictail_variation_label out-of-stock">
+                    {{label}}
+                    <span class="out-of-stock-text">Out of stock</span>
+                  </label>
+                {{/out_of_stock}}
+              {{/variations}}
+              </li>
               
               <li class="cart">{{#add_to_cart_button}}Add to cart{{/add_to_cart_button}}</li>
               {{/add_to_cart}}
@@ -1659,8 +1702,9 @@
         </div>
         {{/product}}
         {{/product_page}}
+<!-- End Product Page -->
 
-
+<!-- Search & Info Buttons -->
         <div id="header-actions">
           <label for="search-check" class="icon-search action-icon">
             Search
@@ -1670,11 +1714,13 @@
           </label>
         </div>
         
+<!-- Search Overlay -->
         <div id="search" class="border">
           {{search}}
           <label id="search-close" class="icon-close action-icon" for="search-check">close</label>
         </div>
 
+<!-- Info Overlay -->
         <div id="info" class="border">
           <div class="html_content">
             <div class="store-description">{{store_description}}</div>
@@ -1689,51 +1735,67 @@
           <label id="info-close" class="icon-close-black action-icon" for="info-check">close</label>
         </div>
 
+<!-- Fun Zone! -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>
             var slide = 0;
             $(function() {
               $("body").addClass("js");
 
+
+
+
+              //Hide info button if there's nothing to show
               if($("#info .store-description").text().length === 0 && $("#info .store-blog").text().length === 0 && $("#info .store-email").text().length === 0) {
                 $(".icon-info").hide();
               }
 
+              //Duplicate invisible header so that content adjusts properly when real header is 'fixed'
               $(".page-header").clone().prependTo('body').attr('id','imposter');
               $(".page-header:eq(1)").css('position','fixed');
+
+              //Product list image
               $(".product-list img").each(function() {
 
                 var $img    = $(this);
 
+
+                //Load high-res image if wide column
                 if($img.closest('li').width() > 400) {
                   
                     $img.attr('src',$img.attr('data-1000'));
 
                 }
                 
+                //Funky loading function makes sure load is called if images are cached
                 $img.one('load', function() {
                   var img_h   = $img.height();
                   var img_w   = $img.width();
 
-                  if(img_h / img_w >= 1.1) {
+                  //Determine orientation
+                  if(img_h / img_w >= 1.2) {
                       $img.closest("li").removeClass("horz").addClass("vert");
                   }
+
+                  //Fade-in class
                   setTimeout(function(){
                     $img.removeClass("unloaded").addClass("loaded");
                   },10);
-                  
                   
                 }).each(function() {
                   if(this.complete) $(this).load();
                 });
 
+                //Fade-out entire product list when a product is clicked
                 $(this).prev('a').click(function() {
                   $(".product-list").css("opacity",0);
                 });
                
 
               });
+              
 
+              //Do carousel functions if more than 1 image
               var img_c = $("#product-images .rotation img").length;
 
               if(img_c > 0) {
@@ -1754,6 +1816,7 @@
                   animProduct();
                 }
 
+                //Arrow keys
                 $(document).keyup(function(){
                   if (event.which === 39) {
                     nextImg();
@@ -1763,15 +1826,18 @@
                   }
                 });
               
-
+                //Product image functions
                 $("#product-images .rotation img").each(function() {
 
                   var $img    = $(this);
 
+                  //Load high-res function
                   setImgSrc($img);
+
+                  //On-load function
                   $img.one('load', function() {
 
-                    
+                    //Get unscaled width/height. Save height for later.
                     var img_h   = $img.css({
                       'width':'auto',
                       'height':'auto'
@@ -1781,18 +1847,23 @@
                       'width':'',
                       'height':''
                     }).attr('data-height', img_h);
-                    if(img_h / img_w >= 1.1) {
+
+                    //Determine orientation
+                    if(img_h / img_w >= 1.2) {
                       $img.addClass('vert');
                     }
 
+                    //Fade-in
                     $img.css("opacity",1);
 
+                    //Set details height when first image loads
                     if($img.closest('.slide').index() === 0) {
                       $("#product-details").css({
                         'top': $img.height() + 30
                       }).addClass('anim');
                     }
 
+                    //Slide in arrows when 2nd image loads
                     if($img.closest('.slide').index() === 1) {
                       $("#arrow_r").addClass('anim');
                       $("#arrow_l").addClass('anim');
@@ -1805,7 +1876,6 @@
                 });
 
                 $("#arrow_r").click(nextImg);
-                
 
                 $("#arrow_l").click(prevImg);
               }
@@ -1816,6 +1886,7 @@
                 }
               }
 
+              //Do some stuff only when user 'stops' resizing browser. Prevents crazy amounts of JS execs.
               var rtime = new Date(1, 1, 2000, 12,00,00);
               var timeout = false;
               var delta = 200;
@@ -1827,6 +1898,7 @@
                   }
               });
 
+              //Fade dat header out past 100px
               $(window).scroll(function() {
                 if($(window).scrollTop() > 100) {
                   if(!$('header').hasClass('fade')) {
@@ -1837,28 +1909,32 @@
                     $('header').removeClass('fade');
                   }
                 }
-                
               });
 
+              //Esc key closes search
               $(document).keyup(function(event) {
                 if (event.which == 27) {
                   $("#search-check, #info-check").attr("checked", false);
                 }
               });
 
+              //Set correct placeholder text for search input.. otherwise it dissapears on focus
               $("#tictail_search_box").attr("placeholder", $('.placeholder').val());
 
+              //Focus on search input when search is activated
               $("#search-check").change(function() {
                 if(this.checked) {
                   $("#tictail_search_box").focus();
                 }
               });
 
+              //Slider function
               function animProduct() {
                 $(".rotation-ship").css("left",-($(window).width() * slide));
                 $("#product-details").css('top', $(".rotation img:eq("+slide+")").height() + 30);
               }
 
+              //Stuff to do when resizing finishes.. reset carousel, load high-res images
               function resizeend() {
                   if (new Date() - rtime < delta) {
                       setTimeout(resizeend, delta);
@@ -1876,7 +1952,11 @@
                   
 
               }
+             
+             //Checks first variation always. Otherwise breaks when some are out of stock.
+             $('.variation input').first().attr('checked', true);
 
+             //Set open height for variation selects
              var ogH = $('.variation label').outerHeight();
               $('.tictail_variation_label').click(function() {
                 
@@ -1893,3 +1973,5 @@
         </script>
     </body>
 </html>
+
+<!-- :) -->
