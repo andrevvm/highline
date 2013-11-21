@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 {{! 
-
+ 
 Highline
-
+ 
 A fancy Tictail theme
-
+ 
 by Andrew McCarthy
 http://andrevv.com
-
+ 
 }}
-<html class="no-js">
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]><html lang="en" class="ie8"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
     <head>
         <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,900|Lato:300' rel='stylesheet' type='text/css'>
         <meta charset="utf-8">
@@ -24,19 +26,17 @@ http://andrevv.com
         </title>
         <link href="{{assets_url}}/shared/css/base.css" rel="stylesheet" type="text/css">
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!--[if lt IE 9]>
+        <script src="{{assets_url}}/shared/js/html5shiv.js"></script>
+        <![endif]-->
         <style>
-
-            #tt_colophon {
-              margin: 10px;
-            }
-
+ 
             html {
                 font-size: 62.5%;
                 background: #FFF;
             }
-
+ 
             header {
               opacity: 1;
               -webkit-transition: z-index 0ms 400ms, opacity 1000ms 0ms;
@@ -45,11 +45,11 @@ http://andrevv.com
               -ms-transition: z-index 0ms 400ms, opacity 1000ms 0ms;
               transition: z-index 0ms 400ms, opacity 1000ms 0ms;;
             }
-
+ 
             header.fade {
               opacity: 0.2;
             }
-
+ 
             header.fade:hover {
               opacity: 1;
               -webkit-transition: opacity .5s;
@@ -58,7 +58,7 @@ http://andrevv.com
               -ms-transition: opacity .5s;
               transition: opacity .5s;
             }
-
+ 
             .border:before,
             .border:after,
             .border-inner:before,
@@ -66,37 +66,37 @@ http://andrevv.com
                 content: "";
                 position: fixed;
                 background: #000;
-                z-index: 10010;
+                z-index: 900;
             }
-
+ 
             .border:before {
                 left: 0;
                 top: 0;
                 height: 100%;
                 width: 0px;
             }
-
+ 
             .border:after {
                 right: 0;
                 top: 0;
                 height: 100%;
                 width: 0px;
             }
-
+ 
             .border-inner:before {
                 bottom: 0;
                 left: 0;
                 height: 0px;
                 width: 100%;
             }
-
+ 
             .border-inner:after {
                 top: 0;
                 left: 0;
                 height: 0px;
                 width: 100%;
             }
-
+ 
             body {
                 line-height: 1.4;
                 font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -106,16 +106,16 @@ http://andrevv.com
                 margin: 0;
                 padding: 0;
             }
-
+ 
             a {
                 text-decoration: none;
                 color: #202020;
             }
-
+ 
             a:hover {
                 text-decoration: underline;
             }
-
+ 
             h1, h2, h3, h4, h5, h6 {
                 font-family: "Playfair Display", "Times New Roman", Times, serif;
                 font-weight: 400;
@@ -123,13 +123,13 @@ http://andrevv.com
                 margin: 0.5em 0;
                 text-rendering: optimizeLegibility;
             }
-
-
+ 
+ 
             ul, ol {
                 margin: 0;
                 padding: 0;
             }
-
+ 
             h1 {
                 font-weight: 900;
                 font-size: 32px;
@@ -137,28 +137,28 @@ http://andrevv.com
                 text-align: center;
                 line-height: 1;
             }
-
+ 
             h1 a {
                 display: inline-block;
                 padding: 0.2em 0.3em 0.4em;
             }
-
+ 
             h1 a:hover {
                 text-decoration: none;
                 background: #FFF;
                 color: black;
             }
-
+ 
             ::-moz-selection {
                 background: #FFECEC;
                 text-shadow: none;
             }
-
+ 
             ::selection {
                 background: #FFECEC;
                 text-shadow: none;
             }
-
+ 
             hr {
                 display: block;
                 height: 1px;
@@ -167,15 +167,15 @@ http://andrevv.com
                 margin: 1em 0;
                 padding: 0;
             }
-
+ 
             img {
                 vertical-align: middle;
             }
-
+ 
             .product-list img.unloaded {
               opacity: 0;
             }
-
+ 
             .js .product-list img.loaded {
               -webkit-transition: opacity 1s;
               -moz-transition: opacity 1s;
@@ -184,38 +184,39 @@ http://andrevv.com
               transition: opacity 1s;
               opacity: 1;
             }
-
+ 
             fieldset {
                 border: 0;
                 margin: 0;
                 padding: 0;
             }
-
+ 
             textarea {
                 resize: vertical;
             }
-
+ 
             p {
                 font-size: 16px;
                 font-size: 1.6rem;
             }
-
+ 
             .page-header {
                 position: relative;
-                z-index: 1000;
+                z-index: 1005;
                 width: 100%;
                 min-width: 320px;
                 top: 0;
                 left: 0;
                 pointer-events: none;
                 display: none;
+                margin-top: 45px;
             }
-
+ 
             #imposter.page-header {
               display: block;
               opacity: 1;
             }
-
+ 
             .page-header h1 {
                 display: block;
                 text-align: center;
@@ -224,27 +225,27 @@ http://andrevv.com
                 padding: 10px 10px 0;
                 position: relative;
             }
-
+ 
             .page-header img {
               max-height: 100px;
             }
-
+ 
             .page-header h1 a {
                 pointer-events: auto;
             }
-
+ 
             nav {
                 display: block;
                 width: 100%;
                 text-align: center;
                 margin-bottom: 20px;
             }
-
+ 
             nav > ul {
                 display: inline-block;
                 text-align: center;
             }
-
+ 
             nav > ul > li > ul {
                 text-align: left;
                 position: absolute;
@@ -252,15 +253,15 @@ http://andrevv.com
                 display: none;
                 padding: .2em 0;
             }
-
+ 
             nav > ul > li:hover ul {
               display: block;
             }
-
+ 
             nav a.selected span {
               border-bottom: 1px solid #202020;
             }
-
+ 
             nav ul li {
                 text-transform: uppercase;
                 letter-spacing: 0.08em;
@@ -268,50 +269,50 @@ http://andrevv.com
                 pointer-events: auto;
                 position: relative;
             }
-
+ 
             nav ul > li {
                 font-size: 12px;
                 font-size: 1.2rem;
                 margin: 0 0.2em;
             }
-
+ 
             nav ul > li:hover a {
               background: white;
             }
-
+ 
             nav ul > li li {
                 font-size: 10px;
                 font-size: 1.0rem;
             }
-
+ 
             nav a {
                 display: block;
                 padding: 0.1em 0.3em 0.3em;
             }
-
+ 
             nav a.child {
                 display: block;
             }
-
-
+ 
+ 
             nav a span {
                 display: inline-block;
                 padding-bottom: 0em;
             }
-
+ 
             nav a:hover {
                 background: #fff;
             }
-
+ 
             nav a span {
                 border-bottom: 1px solid transparent;
             }
-
+ 
             nav a:hover span {
                 border-bottom: 1px solid #202020;
                 text-decoration: none;
             }
-
+ 
             .product-list {
                 margin: 0 5%;
                 text-align: center;
@@ -321,7 +322,7 @@ http://andrevv.com
               -ms-transition: opacity .2s;
               transition: opacity .2s;
             }
-
+ 
             .product-list li {
                 margin: 0 3% 10%;
                 width: 94%;
@@ -329,14 +330,16 @@ http://andrevv.com
                 vertical-align: middle;
                 position: relative;
             }
-
+ 
             .product-list li a {
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
+                display: block;
                 height: 100%;
-                background-color: black;
+                background: black;
+                -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
                 background-color: rgba(0,0,0,0);
                 white-space: nowrap;
                 -webkit-transition: background-color .1s;
@@ -345,7 +348,7 @@ http://andrevv.com
                 -ms-transition: background-color .1s;
                 transition: background-color .1s;
             }
-
+ 
             .product-list .product-meta {
                 display: inline-block;
                 vertical-align: middle;
@@ -359,27 +362,35 @@ http://andrevv.com
                 max-width: 60%;
             }
 
+            .product-list li.no-img .product-meta {
+              opacity: 1;
+            }
+ 
             .product-list li a:hover .product-meta {
                 opacity: 1;
             }
-
+            
+            .touch .product-list li a:hover .product-meta {
+                opacity: 0;
+            }
+ 
             .product-list .product-meta.out-of-stock {
                 background: rgba(255,64,64,0.8);
             }
-
+ 
             .product-list li .spacer {
                 display: inline-block;
                 height: 100%;
                 vertical-align: middle;
                 width: 0;
             }
-
+ 
             .product-list h2 {
                 font-size: 20px;
                 font-size: 2rem;
                 margin: 0;
             }
-
+ 
             .product-list p {
                 font-size: 12px;
                 font-size: 1.2rem;
@@ -387,34 +398,34 @@ http://andrevv.com
                 text-transform: uppercase;
                 letter-spacing: 0.07em;
             }
-
+ 
             .product-list li a:hover {
                 background-color: rgba(0,0,0,0);
             }
-
+ 
             .product-list li:nth-child(odd) {
                 clear: both;
             }
-
+ 
             .product-list li.horz img {
                 width: 100%;
                 height: auto;
             }
-
+ 
             .product-list li.vert img {
                 display: block;
                 width: 100%;
                 height: auto;
                 margin: 0 auto;
             }
-
+ 
             #product-images {
               text-align: center;
               position: absolute;
               width: 100%;
               overflow: hidden;
             }
-
+ 
             #product-images .rotation img {
               opacity: 0;
               -webkit-transition: opacity 1s;
@@ -423,13 +434,13 @@ http://andrevv.com
               -ms-transition: opacity 1s;
               transition: opacity 1s;
             }
-
+ 
             .rotation {
               width: 100%;
               overflow: hidden;
               white-space: nowrap;
             }
-
+ 
             .rotation-ship {
               position: relative;
               z-index: 100;
@@ -442,12 +453,12 @@ http://andrevv.com
               -ms-transition: left .7s cubic-bezier(.82,0,.02,1.05);
               transition: left .7s cubic-bezier(.82,0,.02,1.05);
             }
-
+ 
             .rotation .slide {
               float: left;
               width: 1%;
             }
-
+ 
             #product-details {
               width: 90%;
               margin: 0 auto;
@@ -463,7 +474,7 @@ http://andrevv.com
               display: table;
               clear: both;
             }
-
+ 
             #product-details.anim {
               -webkit-transition: top .5s;
               -moz-transition: top .5s;
@@ -471,19 +482,19 @@ http://andrevv.com
               -ms-transition: top .5s;
               transition: top .5s;
             }
-
+ 
             #product-details .main-col {
               width: 100%;
               margin-right: 0;
               float: none;
             }
-
+ 
             #product-details .sec-col {
               width: 100%;
               float: none;
               margin-bottom: 30px;
             }
-
+ 
             #product-details h2 {
               font-size: 38px;
               font-size: 3.8rem;
@@ -491,70 +502,70 @@ http://andrevv.com
               margin: 0 0 5px;
               text-align: center;
             }
-
+ 
             #product-details p,
             #product-details .main-col {
               line-height: 1.5em;
             }
-
+ 
             #product-details i {
               border-bottom: 1px dotted #555;
               font-style: normal;
             }
-
+ 
             #product-details b {
               font-weight: 700;
             }
-
+ 
             #product-details .main-col {
               font-size: 16px;
             }
-
+ 
             #product-details .main-col a {
               text-decoration: underline;
             }
-
+ 
             #product-details .price p {
               margin: 0.5em 0 1em;
               text-transform: uppercase;
               letter-spacing: 0.1em;
               text-align: center;
             }
-
+ 
             #product-details .price p.out-of-stock {
               color: #FF4040;
             }
-
-
+ 
+ 
             .main-col ul, .main-col ol {
                 line-height: 1.6em;
                 margin-left: 20px;
             }
-
+ 
             .main-col ul {
               list-style: disc;
             }
-
+ 
             .main-col ol {
               list-style: decimal;
             }
-
+ 
             .main-col li {
               margin: 5px 0;
               font-size: 16px;
               font-size: 1.6rem;
             }
-
+ 
             .product-actions {
               width: 100%;
             }
-
+ 
             .product-actions li {
               list-style: none;
               font-size: 14px;
               font-size: 1.4rem;
             }
-
+ 
             .product-actions li.variation, .product-actions li.cart button {
               -webkit-appearance: none;
               -moz-appearance: none;
@@ -578,49 +589,49 @@ http://andrevv.com
               text-align: left;
               margin: 0;
             }
-
+ 
             .product-actions li.cart button {
               border-top: 0;
-              background-image: url(http://andrevvm.github.io/highline/http/img/icon-plus.png);
+              background-image: url("{{assets_url}}/115849/icon-plus.png");
               background-position: 95% center;
               background-repeat: no-repeat;
             }
-
+ 
             .product-actions li.cart button:hover {
               cursor: pointer;
               background: black;
               color: white;
-              background-image: url(http://andrevvm.github.io/highline/http/img/icon-plus-white.png);
+              background-image: url("{{assets_url}}/115849/icon-plus-white.png");
               background-position: 95% center;
               background-repeat: no-repeat;
             }
-
+ 
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
                 .product-actions li.cart button:hover {
-                  background-image: url(http://andrevvm.github.io/highline/http/img/icon-plus-white@2x.png);
+                  background-image: url("{{assets_url}}/115849/icon-plus-white@2x.png");
                   background-size: 11px;
                 }
                 .product-actions li.cart button {
-                  background-image: url(http://andrevvm.github.io/highline/http/img/icon-plus@2x.png);
+                  background-image: url("{{assets_url}}/115849/icon-plus@2x.png");
                   background-size: 11px;
                 }
             }
-
+ 
             .product-actions li:last-child {
               border-bottom: 1px solid black;
             }
-
+ 
             .product-actions li.variation {
               padding: 0;
               position: relative;
               overflow: hidden;
               height: 0em;
             }
-
+ 
             li.variation.variation-1, li.variation.unavailable {
               height: 3.5em;
             }
-
+ 
             .product-actions li.variation.open {
               -webkit-transition: height 200ms;
               -moz-transition: height 200ms;
@@ -628,16 +639,16 @@ http://andrevv.com
               -ms-transition: height 200ms;
               transition: height 200ms;
             }
-
+ 
             li.variation input[type=radio] {
               position: absolute;
               left: -9000px;
             }
-
+ 
             li.variation + li {
               border-top: 0;
             }
-
+ 
             li.variation label {
               width: auto;
               display: block;
@@ -647,54 +658,54 @@ http://andrevv.com
               cursor: pointer;
               display: none;
             }
-
-
-
+ 
+ 
+ 
             li.variation input:checked + label {
               display: block;
-              background-image: url(http://andrevvm.github.io/highline/http/img/icon-select.png);
+              background-image: url("{{assets_url}}/115849/icon-select.png");
               background-position: 95% center;
               background-repeat: no-repeat;
             }
-
+ 
             li.variation input:checked + label:hover {
-              background-image: url(http://andrevvm.github.io/highline/http/img/icon-select-white.png);
+              background-image: url("{{assets_url}}/115849/icon-select-white.png");
             }
-
-
+ 
+ 
             li.variation.open input:checked + label, li.variation.open input:checked + label:hover {
-              background-image: url(http://andrevvm.github.io/highline/http/img/icon-check.png);
+              background-image: url("{{assets_url}}/115849/icon-check.png");
             }
-
+ 
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
                 li.variation input:checked + label {
-                  background-image: url(http://andrevvm.github.io/highline/http/img/icon-select@2x.png);
+                  background-image: url("{{assets_url}}/115849/icon-select@2x.png");
                   background-size: 13px;
                 }
                 li.variation input:checked + label:hover {
-                  background-image: url(http://andrevvm.github.io/highline/http/img/icon-select-white@2x.png);
+                  background-image: url("{{assets_url}}/115849/icon-select-white@2x.png");
                   background-size: 12px;
                 }
-
-
+ 
+ 
                 li.variation.open input:checked + label, li.variation.open input:checked + label:hover {
-                  background-image: url(http://andrevvm.github.io/highline/http/img/icon-check@2x.png);
+                  background-image: url("{{assets_url}}/115849/icon-check@2x.png");
                   background-size: 12px;
                 }
             }
-
+ 
             li.variation.open label {
               display: block;
               background: #222;
               color: white;
             }
-
+ 
             li.variation.open label.out-of-stock {
               background: #ddd;
               color: white;
               position: relative;
             }
-
+ 
             li.variation.open .out-of-stock-text {
               position: absolute;
               top: 1em;
@@ -702,48 +713,48 @@ http://andrevv.com
               display: none;
               color: #FF4040;
             }
-
+ 
             li.variation.open label.out-of-stock:hover {
               background: #eee;
               color: #eee;
             }
-
+ 
             li.variation.open label.out-of-stock:hover .out-of-stock-text {
               display: block;
             }
-
+ 
             li.variation label:hover {
               background-color: #000;
               color: white;
             }
-
+ 
             li.variation label:active {
               background-color: #333;
             }
-
+ 
             li.variation.unavailable {
               border-color: #ccc;
               color: #ccc;
             }
-
+ 
             li.variation.unavailable label {
               display: block;
               border: 0;
             }
-
+ 
             #product-details p.shipping-destinations {
               font-size: 12px;
               color: #999;
               text-align: center;
               margin: 1em 0;
             }
-
+ 
             #tictail_search {
               height: 100%;
             }
-
-
-
+ 
+ 
+ 
             #tictail_search ::-webkit-input-placeholder { /* WebKit browsers */
                 color:    #eee;
             }
@@ -756,7 +767,7 @@ http://andrevv.com
             #tictail_search :-ms-input-placeholder { /* Internet Explorer 10+ */
                 color:    #eee;
             }
-
+ 
             #search,
             #info {
               position: fixed;
@@ -785,12 +796,12 @@ http://andrevv.com
               transition-duration: 200ms, 0ms;
               transition-delay: 200ms, 400ms;
             }
-
+ 
             #search-check, #info-check {
               position: fixed;
               left: -9000px;
             }
-
+ 
             #search-check:checked ~ #search,
             #info-check:checked ~ #info {
               opacity: 1;
@@ -811,12 +822,12 @@ http://andrevv.com
               transition-duration: 200ms, 0ms;
               transition-delay: 0ms, 0ms;
             }
-
+ 
             #info-check:checked ~ #info #info-close,
             #search-check:checked ~ #search #search-close {
               display: block;
             }
-
+ 
             #search-check:checked ~ #search input,
             #info-check:checked ~ #info .html_content {
               opacity: 1;
@@ -826,7 +837,7 @@ http://andrevv.com
               -ms-transition: opacity 200ms 200ms;
               transition: opacity 200ms 200ms;
             }
-
+ 
             #search-check:checked ~ #header-actions,
             #info-check:checked ~ #header-actions {
               opacity: 0;
@@ -842,9 +853,9 @@ http://andrevv.com
               transition: opacity 200ms, left 0ms;
               transition-delay: 0ms, 200ms;
             }
-
+ 
             #info-check:checked ~ header {
-              z-index: 10005;
+              z-index: 998;
               opacity: 1;
               -webkit-transition: z-index 0ms 0ms, opacity 200ms 0ms;
               -moz-transition: z-index 0ms 0ms, opacity 200ms 0ms;
@@ -852,7 +863,7 @@ http://andrevv.com
               -ms-transition: z-index 0ms 0ms, opacity 200ms 0ms;
               transition: z-index 0ms 0ms, opacity 200ms 0ms;
             }
-
+ 
             #info-check:checked ~ header nav {
                 opacity: 0;
                 -webkit-transition: opacity 200ms 0ms;
@@ -861,7 +872,7 @@ http://andrevv.com
                 -ms-transition: opacity 200ms 0ms;
                 transition: opacity 200ms 0ms;
               }
-
+ 
             header nav {
               opacity: 1;
               -webkit-transition: opacity 200ms 400ms;
@@ -870,8 +881,8 @@ http://andrevv.com
               -ms-transition: opacity 200ms 400ms;
               transition: opacity 200ms 400ms;
             }
-
-
+ 
+ 
             #search input {
               font-family: "Playfair Display", "Times New Roman", Times, serif;
               font-weight: 400;
@@ -891,11 +902,11 @@ http://andrevv.com
               -moz-transition: opacity 200ms 0ms;
               -o-transition: opacity 200ms 0ms;
             }
-
+ 
             #search input:focus {
               outline: none;
             }
-
+ 
             #tictail_search_results {
               color: white;
               position: relative;
@@ -907,7 +918,7 @@ http://andrevv.com
               background: transparent;
               border: 0;
             }
-
+ 
             #tictail_search_results .thumb {
               float: none;
               display: inline-block;
@@ -915,19 +926,19 @@ http://andrevv.com
               height: auto;
               margin-left: 20px;
             }
-
+ 
             #tictail_search_results .currency {
               font-size: 100%;
             }
-
+ 
             #tictail_search_results .item {
               border: 0;
             }
-
+ 
             #tictail_search_results .result {
               padding: 0;
             }
-
+ 
             #search .result {
               display: block;
               width: 100%;
@@ -936,47 +947,47 @@ http://andrevv.com
               text-align: left;
               font-size: 14px;
             }
-
+ 
             #search .thumb {
               position: relative;
               top: -4px;
             }
-
+ 
             #search .title {
               padding-left: 20px;
               font-family: "Playfair Display", "Times New Roman", Times, serif;
               font-weight: 400;
             }
-
+ 
             #tictail_search_results .title,
             #tictail_search_results .price {
               display: inline-block;
             }
-
+ 
             #search .price {
               float: right;
               font-size: .8em;
               margin-right: 20px;
               text-transform: uppercase;
             }
-
+ 
             #search .price.out_of_stock {
               color: #FF4040;
             }
-
+ 
             #search a {
               background-color: #f3f0f0;
             }
-
+ 
             #search a:hover {
               background-color: white;
               text-decoration: none;
             }
-
+ 
             #search .no-results {
               color: #666;
             }
-
+ 
             #search-close,
             #info-close {
               position: fixed;
@@ -985,12 +996,12 @@ http://andrevv.com
               z-index: 10005;
               display: none;
             }
-
+ 
             #info {
               background: rgba(255,255,255,0.9);
               overflow: auto;
             }
-
+ 
             #info .html_content {
               opacity: 0;
               margin: 0 auto;
@@ -999,31 +1010,31 @@ http://andrevv.com
               padding-bottom: 60px;
               line-height: 1.5em;
               position: relative;
-              top: 110px;
+              top: 140px;
               text-align: center;
               -webkit-transition: opacity 200ms 0ms;
               -moz-transition: opacity 200ms 0ms;
               -o-transition: opacity 200ms 0ms;
               transition: opacity 200ms 0ms;
             }
-
+ 
             #info .html_content a {
               text-decoration: underline;
             }
-
+ 
             .store-description {
               margin: 1em 0;
             }
-
+ 
             #header-actions {
               position: fixed;
               bottom: 25px;
               left: 25px;
-              z-index: 10000;
+              z-index: 7000;
               -webkit-transition: opacity 200ms, left 0ms;
               -webkit-transition-delay: 200ms, 0ms;
             }
-
+ 
             .action-icon {
               float: left;
               margin-right: 15px;
@@ -1034,47 +1045,47 @@ http://andrevv.com
               cursor: pointer;
               text-indent: -9000px;
             }
-
+ 
             .icon-search {
-              background-image: url(http://andrevvm.github.io/highline/http/img/icon-search.png);
+              background-image: url("{{assets_url}}/115849/icon-search.png");
             }
-
+ 
             .icon-info {
-              background-image: url(http://andrevvm.github.io/highline/http/img/icon-info.png);
+              background-image: url("{{assets_url}}/115849/icon-info.png");
             }
-
+ 
             .icon-close {
-              background-image: url(http://andrevvm.github.io/highline/http/img/icon-close.png);
+              background-image: url("{{assets_url}}/115849/icon-close.png");
             }
-
+ 
             .icon-close-black {
-              background-image: url(http://andrevvm.github.io/highline/http/img/icon-close-black.png);
+              background-image: url("{{assets_url}}/115849/icon-close-black.png");
             }
-
+ 
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
                 .icon-search {
-                  background-image: url(http://andrevvm.github.io/highline/http/img/icon-search@2x.png);
+                  background-image: url("{{assets_url}}/115849/icon-search@2x.png");
                 }
                 .icon-info {
-                  background-image: url(http://andrevvm.github.io/highline/http/img/icon-info@2x.png);
+                  background-image: url("{{assets_url}}/115849/icon-info@2x.png");
                 }
                 .icon-close {
-                  background-image: url(http://andrevvm.github.io/highline/http/img/icon-close@2x.png);
+                  background-image: url("{{assets_url}}/115849/icon-close@2x.png");
                 }
                 .icon-close-black {
-                  background-image: url(http://andrevvm.github.io/highline/http/img/icon-close-black@2x.png);
+                  background-image: url("{{assets_url}}/115849/icon-close-black@2x.png");
                 }
             }
-
+ 
             #product-images .rotation img {
               width: 90%;
             }
-
+ 
             #product-images .rotation img.vert {
               width: 90%;
               height: auto;
             }
-
+ 
             .image-nav {
               position: absolute;
               width: 50%;
@@ -1082,17 +1093,17 @@ http://andrevv.com
               top: 40px;
               z-index: 100;
             }
-
+ 
             .image-nav img {
               height: auto;
               width: 30px;
               margin: 0 20px;
             }
-
+ 
             #arrow_r {
               left: 50%;
             }
-
+ 
             #arrow_r {
               left: auto;
               right: -100%;
@@ -1102,7 +1113,7 @@ http://andrevv.com
               -ms-transition: right .5s;
               transition: right .5s;
             }
-
+ 
             #arrow_r.anim {
               right: 0;
             }
@@ -1115,62 +1126,70 @@ http://andrevv.com
               -ms-transition: left .5s;
               transition: left .5s;
             }
-
+ 
             #arrow_l.anim {
               left: 0;
             }
-
-
+ 
+ 
             .info-links {
               clear: both;
               font-size: 14px;
               text-align: center;
               padding: 40px 0 80px;
             }
-
+ 
             .info-links a {
               margin: 0 10px;
               color: #999;
             }
-
+ 
             .info-links a:hover {
               color: black;
             }
-
-
+ 
+ 
           /* ==========================================================================
              Media Queries
              ========================================================================== */
-
+ 
             @media only screen and (min-width: 480px) {
-
+ 
+                .touch .product-list li a:hover .product-meta {
+                    opacity: 1;
+                }
+                
+                .page-header {
+                    margin-top: 40px;
+                }
+ 
                 .border:before {
-                    width: 4px;
+                    width: 8px;
                 }
-
+ 
                 .border:after {
-                    width: 4px;
+                    width: 8px;
                 }
-
+ 
                 .border-inner:before {
-                    height: 4px;
+                    height: 8px;
                 }
-
+ 
                 .border-inner:after {
-                    height: 4px;
+                    height: 8px;
                 }
-
-
+ 
+ 
                 .page-header {
                     position: relative;
                     margin-bottom: 2.2em;
                     display: block;
                 }
-
+ 
                 .page-header h1 {
                   margin-top: 0;
                 }
-
+ 
                 #imposter.page-header {
                   position: relative;
                   display: block;
@@ -1179,66 +1198,66 @@ http://andrevv.com
                   visibility: hidden;
                   margin-bottom: 30px;
                 }
-
+ 
                 h1 {
                     font-size: 42px;
                     font-size: 4.2rem;
                 }
-
+ 
                 nav ul > li {
                     font-size: 14px;
                     font-size: 1.4rem;
                 }
-
+ 
                 nav ul > li li {
                     font-size: 12px;
                     font-size: 1.2rem;
                 }
-
+ 
                 .product-list h2 {
                     font-size: 24px;
                     font-size: 2.4rem;
                     line-height: 1em;
                 }
-
+ 
                 .product-list p {
                     font-size: 14px;
                     font-size: 1.4rem;
                     padding-top: 8px;
                 }
-
+ 
                 #product-details h2 {
                   text-align: left;
                 }
-
+ 
                 #product-details .price p {
                   text-align: left;
                 }
-
+ 
                 #product-details {
                   width: 60%;
                 }
-
+ 
                 #product-images, .rotation, .rotation {
                   height: 100%;
                 }
-
+ 
                 #product-images .rotation img {
                   width: 60%;
                   max-width: 1000px;
                   height: auto;
                 }
-
+ 
                 #product-images .rotation img.vert {
                   height: 70%;
                   max-height: 800px;
                   width: auto;
                 }
-
+ 
                 #product-images .slide {
                   height: 100%;
                 }
-
+ 
                 .image-nav {
                   position: fixed;
                   width: 15%;
@@ -1251,252 +1270,220 @@ http://andrevv.com
                   cursor: pointer;
                   opacity: 0.8;
                 }
-
+ 
                 .image-nav img {
                   height: 100%;
                   width: auto;
                 }
-
+ 
                 .image-nav:hover {
                   opacity: 1;
                 }
-
+ 
                 #search-close,
                 #info-close {
                   top: 30px;
                   left: 30px;
                 }
-
+ 
                 #header-actions {
                   top: 30px;
                   left: 30px;
                   bottom: auto;
                 }
-
+ 
                 .action-icon {
                   margin-right: 15px;
                   width: 25px;
                   height: 25px;
                 }
-
+ 
                 #info .html_content {
                   width: 50%;
                   font-size: 20px;
                 }
-
+ 
                 #product-details p.shipping-destinations {
                   font-size: 14px;
                 }
-
+ 
                 #search input {
                   width: 70%;
                   top: 20%;
                   height: 80px;
                   font-size: 54px;
                 }
-
+ 
                 #search .result {
                   width: 100%;
                   font-size: 20px;
                 }
-
+ 
                 #tictail_search_results {
                   width: 70%;
                 }
-
+ 
                 .info-links {
                   padding-bottom: 40px;
                 }
-
+ 
             }
-
+ 
             @media only screen and (min-width: 768px) {
-
-                .border:before {
-                    width: 8px;
-                }
-
-                .border:after {
-                    width: 8px;
-                }
-
-                .border-inner:before {
-                    height: 8px;
-                }
-
-                .border-inner:after {
-                    height: 8px;
-                }
-
+ 
                 h1 {
                     font-size: 52px;
                     font-size: 5.2rem;
                 }
-
+ 
                 nav ul > li {
                     font-size: 16px;
                     font-size: 1.6rem;
                 }
-
+ 
                 nav ul > li li {
                     font-size: 14px;
                     font-size: 1.4rem;
                 }
-
+ 
                 .product-list {
                     margin: 0 3.26%;
                 }
-
+ 
                 .product-list li {
                     margin: 0 3.26% 8%;
                     width: 43.25%;
                     max-width: 1000px;
                 }
-
+ 
                 .product-list li.vert {
                     margin: 0 3.26% 8%;
                     width: 26.5%;
                 }
-
+ 
                 .product-list h2 {
                     font-size: 24px;
                     font-size: 2.4rem;
                 }
-
+ 
                 .product-list p {
                     font-size: 14px;
                     font-size: 1.4rem;
                 }
-
+ 
                 .image-nav {
                   top: calc(50% - 30px);
                   height: 60px;
                 }
-
+ 
                 #product-details .main-col {
                   width: 58%;
                   float: left;
                 }
-
+ 
                 #product-details .sec-col {
                   width: 32%;
                   float: right;
                   position: relative;
                 }
-
+ 
                 #search-close,
                 #info-close {
                   top: 35px;
                   left: 35px;
                 }
-
+ 
                 #header-actions {
                   top: 35px;
                   left: 35px;
                 }
-
+ 
                 .action-icon {
                   margin-right: 18px;
                   width: 28px;
                   height: 28px;
                 }
-
+ 
                 #info .html_content {
                   font-size: 24px;
                 }
-
+ 
             }
-
+ 
             @media only screen and (min-width: 1140px) {
-
-                .border:before {
-                    width: 10px;
-                }
-
-                .border:after {
-                    width: 10px;
-                }
-
-                .border-inner:before {
-                    height: 10px;
-                }
-
-                .border-inner:after {
-                    height: 10px;
-                }
-
+ 
                 h1 {
                     font-size: 64px;
                     font-size: 6.4rem;
                 }
-
+ 
                 nav ul > li {
                     font-size: 18px;
                     font-size: 1.8rem;
                 }
-
+ 
                 nav ul > li li {
                     font-size: 16px;
                     font-size: 1.6rem;
                 }
-
+ 
                 .product-list {
                     margin: 0 3.26%;
                 }
-
+ 
                 .product-list h2 {
                     font-size: 32px;
                     font-size: 3.2rem;
                 }
-
+ 
                 .product-list p {
                     font-size: 16px;
                     font-size: 1.6rem;
                 }
-
+ 
                 .image-nav {
                   top: calc(50% - 35px);
                   height: 70px;
                 }
-
+ 
                 .product-actions li.variation, .product-actions li.cart button {
                   font-size: 16px;
                   font-size: 1.6rem;
                 }
-
+ 
                 #product-details p,
                 #product-details .main-col {
                   font-size: 18px;
                   font-size: 1.8rem;
                 }
-
+ 
                 #product-details h2 {
                   font-size: 42px;
                   font-size: 4.2rem;
                 }
-
+ 
                 #search-close,
                 #info-close {
                   top: 40px;
                   left: 40px;
                 }
-
+ 
                 #header-actions {
                   top: 40px;
                   left: 40px;
                 }
-
+ 
                 .action-icon {
                   margin-right: 20px;
                   width: 30px;
                   height: 30px;
                 }
             }
-
+ 
             /* ==========================================================================
                Print styles
                ========================================================================== */
-
+ 
             @media print {
                 * {
                     background: transparent !important;
@@ -1504,79 +1491,106 @@ http://andrevv.com
                     box-shadow: none !important;
                     text-shadow: none !important;
                 }
-
+ 
                 a,
                 a:visited {
                     text-decoration: underline;
                 }
-
+ 
                 a[href]:after {
                     content: " (" attr(href) ")";
                 }
-
+ 
                 abbr[title]:after {
                     content: " (" attr(title) ")";
                 }
-
+ 
                 /*
                  * Don't show links for images, or javascript/internal links
                  */
-
+ 
                 .ir a:after,
                 a[href^="javascript:"]:after,
                 a[href^="#"]:after {
                     content: "";
                 }
-
+ 
                 pre,
                 blockquote {
                     border: 1px solid #999;
                     page-break-inside: avoid;
                 }
-
+ 
                 thead {
                     display: table-header-group; /* h5bp.com/t */
                 }
-
+ 
                 tr,
                 img {
                     page-break-inside: avoid;
                 }
-
+ 
                 img {
                     max-width: 100% !important;
                 }
-
+ 
                 @page {
                     margin: 0.5cm;
                 }
-
+ 
                 p,
                 h2,
                 h3 {
                     orphans: 3;
                     widows: 3;
                 }
-
+ 
                 h2,
                 h3 {
                     page-break-after: avoid;
                 }
             }
 
-        </style>
+            .ie8 .product-actions li.variation {
+              overflow: visible;
+              height: auto !important;
+              position: relative;
+            }
 
+            .ie8 li.variation input {
+              position: relative;
+              float: right;
+              left: auto;
+              right: 10px;
+              top: 15px;
+            }
+
+            .ie8 .product-actions li.variation label {
+              display: block;
+            }
+
+            .ie8 li.variation.open label {
+              background: white;
+              color: black;
+            }
+
+            .ie8 li.cart {
+              border-bottom: 1px solid black;
+            }
+ 
+        </style>
+ 
     </head>
     <body>
 <!-- These inputs are extremely important. Enable JS-free search & info overlays -->
         <input id="search-check" type="checkbox" />
         <input id="info-check" type="checkbox" />
 <!-- Don't touch these! ^^^ -->
-
+ 
 <!-- Adds black border around window. Safe to remove. -->
         <div class="border"><div class="border-inner"></div></div>
 <!-- End border -->
-
+ 
 <!-- Start Page Header -->
         <header class="page-header">
             <h1 {{#logotype}}style='display:none'{{/logotype}}><a href="{{store_url}}">{{store_name}}</a></h1>
@@ -1587,12 +1601,13 @@ http://andrevv.com
             {{/logotype}}
             <nav>
                 <ul>
+ 
                     {{#navigation}}
                     <li>
-                        <a href="{{store_url}}{{url}}" {{#is_current}}class="selected"{{/is_current}}><span>{{label}}</span></a>
+                        <a href="{{url}}" {{#is_current}}class="selected"{{/is_current}}><span>{{label}}</span></a>
                         <ul class="children">
                         {{#children}}
-                          <li><a href="{{store_url}}{{url}}" class="child {{#is_current}}selected{{/is_current}}"><span>{{label}}</span></a></li>
+                          <li><a href="{{url}}" class="child {{#is_current}}selected{{/is_current}}"><span>{{label}}</span></a></li>
                         {{/children}}
                         </ul>
                     </li>
@@ -1601,15 +1616,15 @@ http://andrevv.com
             </nav>
         </header>
 <!-- End Page Header -->
-
+ 
 <!-- Start Product List -->
         {{#list_page}}
         <section class="product-list">
             <ul>
                 {{#products}}
-                    
+ 
                     <li class="horz">
-                        <a href="{{store_url}}{{url}}">
+                        <a href="{{url}}">
                             <span class="spacer"></span>
                             <div class="product-meta {{#out_of_stock}}out-of-stock{{/out_of_stock}}">
                                 <h2>{{title}}</h2>
@@ -1617,114 +1632,119 @@ http://andrevv.com
                                     <p>{{price_without_currency}} {{currency_code}}</p>
                                 {{/in_stock}}
                                 {{#out_of_stock}}
-                                    <p>Out of Stock</p>
+                                    <p>{{#lang}}Out of Stock{{/lang}}</p>
                                 {{/out_of_stock}}
                             </div>
                         </a>
                         {{#primary_image}}
-                            <img src="{{url-500}}" data-1000="{{url-1000}}" class="unloaded" />
+                            <img src="{{url-500}}" data-1000="{{url-1000}}" class="unloaded" alt="{{title}}"/>
                         {{/primary_image}}
                     </li>
-
+ 
                 {{/products}}
-
+ 
             </ul>
         </section>
         <div class="info-links">
           {{social_buttons}}
           <br/><br/>
-          {{#return_policy}}Return policy{{/return_policy}}
-          {{#terms}}Terms &amp; conditions{{/terms}}
+          {{#return_policy}}{{#lang}}Return policy{{/lang}}{{/return_policy}}
+          {{#terms}}{{#lang}}Terms &amp; Conditions{{/lang}}{{/terms}}
         </div>
         {{/list_page}}
 <!-- End Product List -->
-
+ 
 <!-- Start Product Page -->
         {{#product_page}}
         {{#product}}
-        
-        <div id="product-images">
-          <div class="rotation">
-            
-            <div class="rotation-ship">
-            {{#all_images}}
-            <div class="main-image slide">
-              <a href="{{url-2000}}" class="fullscreen fullscreen_image">
-                <img src="{{url-500}}" data-1000="{{url-1000}}" />
-              </a>
-            </div>
-            {{/all_images}}
-            </div>
-            
-          </div>
-          <div id="arrow_r" class="image-nav">
-            <img src="http://andrevvm.github.io/highline/http/img/arrow_r.png" />
-          </div>
-          <div id="arrow_l" class="image-nav">
-            
-            <img src="http://andrevvm.github.io/highline/http/img/arrow_l.png" />
-
-
-          </div>
-        </div>
-        <div id="product-details">
-          <div class="sec-col">
-            
-            <ul class="product-actions">
-              {{#out_of_stock}}
-              <li class="variation unavailable"><label>Unavailable</label></li>
-              {{/out_of_stock}}
-              {{#add_to_cart}}
+        <div id="product_info" itemscope itemtype="http://schema.org/Product" >
+          <div id="product-images">
+            <div class="rotation">
               
-              <li class="variation {{#variations}}variation-{{position}} {{/variations}}">{{#variations_radio}}{{variations_radio}}{{/variations_radio}}
-              {{#variations}}
+              <div class="rotation-ship">
+              {{#all_images}}
+              <div class="main-image slide">
+                <a href="{{url-2000}}" class="fullscreen fullscreen_image">
+                  <img src="{{url-500}}" data-1000="{{url-1000}}" itemprop="image" alt="{{title}}"/>
+                </a>
+              </div>
+              {{/all_images}}
+              </div>
+              
+            </div>
+            <div id="arrow_r" class="image-nav">
+              <img src="{{assets_url}}/115849/arrow_r.png" />
+            </div>
+            <div id="arrow_l" class="image-nav">
+              
+              <img src="{{assets_url}}/115849/arrow_l.png" />
+ 
+ 
+            </div>
+          </div>
+          <div id="product-details">
+            <div class="sec-col">
+              
+              <ul class="product-actions">
                 {{#out_of_stock}}
-                  <input type="radio" name="variation_id" id="{{identifier}}" disabled class="tictail_radio tictail_variation_radio">
-                  <label for="{{identifier}}" class="tictail_label tictail_variation_label out-of-stock">
-                    {{label}}
-                    <span class="out-of-stock-text">Out of stock</span>
-                  </label>
+                <li class="variation unavailable"><label>{{#lang}}Unavailable{{/lang}}</label></li>
                 {{/out_of_stock}}
-              {{/variations}}
-              </li>
-              
-              <li class="cart">{{#add_to_cart_button}}Add to cart{{/add_to_cart_button}}</li>
-              {{/add_to_cart}}
-            </ul>
-
-            <p class="shipping-destinations">{{shipping_destinations}}</p>
-
-          </div>
-          <div class="main-col">
-            <h2>{{title}}</h2>
-            <div class="price">
-              {{#in_stock}}
-                  <p>{{price_without_currency}} {{currency_code}}</p>
-              {{/in_stock}}
-              {{#out_of_stock}}
-                  <p class="out-of-stock">Out of Stock</p>
-              {{/out_of_stock}}
+                {{#add_to_cart}}
+                
+                <li class="variation {{#variations}}variation-{{position}} {{/variations}}">{{#variations_radio}}{{variations_radio}}{{/variations_radio}}
+                {{#variations}}
+                  {{#out_of_stock}}
+                    <input type="radio" name="variation_id" id="{{identifier}}" disabled class="tictail_radio tictail_variation_radio">
+                    <label for="{{identifier}}" class="tictail_label tictail_variation_label out-of-stock">
+                      {{label}}
+                      <span class="out-of-stock-text">{{#lang}}Out of stock{{/lang}}</span>
+                    </label>
+                  {{/out_of_stock}}
+                {{/variations}}
+                </li>
+                
+                <li class="cart">{{#add_to_cart_button}}{{#lang}}Add to cart{{/lang}}{{/add_to_cart_button}}</li>
+                {{/add_to_cart}}
+              </ul>
+ 
+              <p class="shipping-destinations">{{shipping_destinations}}</p>
+ 
             </div>
-            <p>{{description}}</p>
-          </div>
-          <div class="info-links">
-            {{social_buttons}}
-            <br/><br/>
-            {{#return_policy}}Return policy{{/return_policy}}
-            {{#terms}}Terms &amp; conditions{{/terms}}
+            <div class="main-col">
+              <h2 itemprop="name">{{title}}</h2>
+              <div class="price">
+                {{! This is meta data for search engines etc. }}
+                <meta itemprop="priceCurrency" content="{{currency_code}}">
+                {{#in_stock}}
+                    <p itemprop="avaialability price" href="http://schema.org/InStock">{{price_without_currency}} {{currency_code}}</p>
+                {{/in_stock}}
+                {{#out_of_stock}}
+                    <p class="out-of-stock" itemprop="availability" href="http://schema.org/OutOfStock">{{#lang}}Out of stock{{/lang}}</p>
+                {{/out_of_stock}}
+              </div>
+              <div class="product_description" itemprop="description">
+                <p >{{description}}</p>
+              </div>  
+            </div>
+            <div class="info-links">
+              {{social_buttons}}
+              <br/><br/>
+              {{#return_policy}}{{#lang}}Return policy{{/lang}}{{/return_policy}}
+              {{#terms}}{{#lang}}Terms &amp; Conditions{{/lang}}{{/terms}}
+            </div>
           </div>
         </div>
         {{/product}}
         {{/product_page}}
 <!-- End Product Page -->
-
+ 
 <!-- Search & Info Buttons -->
         <div id="header-actions">
           <label for="search-check" class="icon-search action-icon">
-            Search
+            {{#lang}}Search{{/lang}}
           </label>
           <label for="info-check" class="icon-info action-icon">
-            Info
+            {{#lang}}Info{{/lang}}
           </label>
         </div>
         
@@ -1733,7 +1753,7 @@ http://andrevv.com
           {{search}}
           <label id="search-close" class="icon-close action-icon" for="search-check">close</label>
         </div>
-
+ 
 <!-- Info Overlay -->
         <div id="info" class="border">
           <div class="html_content">
@@ -1743,54 +1763,64 @@ http://andrevv.com
             {{/store_blog_url}}
             <p><a href="mailto:{{store_email}}" class="store-email">{{store_email}}</a></p>
           </div>
-
+ 
           
-
+ 
           <label id="info-close" class="icon-close-black action-icon" for="info-check">close</label>
         </div>
-
+ 
 <!-- Fun Zone! -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>
             var slide = 0;
             $(function() {
               $("body").addClass("js");
-
-
-
-
+ 
+                
+              //Test for touch
+              (function() {
+                'ontouchstart' in document.documentElement ? $("body").addClass("touch") : $("body").addClass("no-touch")
+               })();
+                
               //Hide info button if there's nothing to show
               if($("#info .store-description").text().length === 0 && $("#info .store-blog").text().length === 0 && $("#info .store-email").text().length === 0) {
                 $(".icon-info").hide();
               }
-
+ 
               //Duplicate invisible header so that content adjusts properly when real header is 'fixed'
               $(".page-header").clone().prependTo('body').attr('id','imposter');
               $(".page-header:eq(1)").css('position','fixed');
 
+              //Look for no images
+              $(".product-list li").each(function() {
+                if ($(this).find('img').length == 0) {
+                  $(this).addClass('no-img');
+                }
+              });
+ 
               //Product list image
               $(".product-list img").each(function() {
-
+ 
                 var $img    = $(this);
-
-
+ 
+ 
                 //Load high-res image if wide column
                 if($img.closest('li').width() > 400) {
                   
                     $img.attr('src',$img.attr('data-1000'));
-
+ 
                 }
                 
                 //Funky loading function makes sure load is called if images are cached
                 $img.one('load', function() {
                   var img_h   = $img.height();
                   var img_w   = $img.width();
-
+ 
                   //Determine orientation
                   if(img_h / img_w >= 1.2) {
                       $img.closest("li").removeClass("horz").addClass("vert");
                   }
-
+ 
                   //Fade-in class
                   setTimeout(function(){
                     $img.removeClass("unloaded").addClass("loaded");
@@ -1799,21 +1829,21 @@ http://andrevv.com
                 }).each(function() {
                   if(this.complete) $(this).load();
                 });
-
+ 
                 //Fade-out entire product list when a product is clicked
                 $(this).prev('a').click(function() {
                   $(".product-list").css("opacity",0);
                 });
                
-
+ 
               });
               
-
+ 
               //Do carousel functions if more than 1 image
               var img_c = $("#product-images .rotation img").length;
-
+ 
               if(img_c > 0) {
-
+ 
                 function nextImg() {
                   slide ++;
                   if(slide == img_c) {
@@ -1821,7 +1851,7 @@ http://andrevv.com
                   }
                   animProduct();
                 }
-
+ 
                 function prevImg() {
                   slide --;
                   if(slide == -1) {
@@ -1829,7 +1859,7 @@ http://andrevv.com
                   }
                   animProduct();
                 }
-
+ 
                 //Arrow keys
                 $(document).keyup(function(){
                   if (event.which === 39) {
@@ -1842,15 +1872,15 @@ http://andrevv.com
               
                 //Product image functions
                 $("#product-images .rotation img").each(function() {
-
+ 
                   var $img    = $(this);
-
+ 
                   //Load high-res function
                   setImgSrc($img);
-
+ 
                   //On-load function
                   $img.one('load', function() {
-
+ 
                     //Get unscaled width/height. Save height for later.
                     var img_h   = $img.css({
                       'width':'auto',
@@ -1861,45 +1891,45 @@ http://andrevv.com
                       'width':'',
                       'height':''
                     }).attr('data-height', img_h);
-
+ 
                     //Determine orientation
                     if(img_h / img_w >= 1.2) {
                       $img.addClass('vert');
                     }
-
+ 
                     //Fade-in
                     $img.css("opacity",1);
-
+ 
                     //Set details height when first image loads
                     if($img.closest('.slide').index() === 0) {
                       $("#product-details").css({
                         'top': $img.height() + 30
                       }).addClass('anim');
                     }
-
+ 
                     //Slide in arrows when 2nd image loads
                     if($img.closest('.slide').index() === 1) {
                       $("#arrow_r").addClass('anim');
                       $("#arrow_l").addClass('anim');
                     }
-
+ 
                   }).each(function() {
                     if(this.complete) $(this).load();
                   });
-
+ 
                 });
-
+ 
                 $("#arrow_r").click(nextImg);
-
+ 
                 $("#arrow_l").click(prevImg);
               }
-
+ 
               function setImgSrc(img) {
                 if(img.width() > 500 || img.height() > 500) {
                   img.attr('src',img.attr('data-1000'));
                 }
               }
-
+ 
               //Do some stuff only when user 'stops' resizing browser. Prevents crazy amounts of JS execs.
               var rtime = new Date(1, 1, 2000, 12,00,00);
               var timeout = false;
@@ -1911,7 +1941,7 @@ http://andrevv.com
                       setTimeout(resizeend, delta);
                   }
               });
-
+ 
               //Fade dat header out past 100px
               $(window).scroll(function() {
                 if($(window).scrollTop() > 100) {
@@ -1924,30 +1954,30 @@ http://andrevv.com
                   }
                 }
               });
-
+ 
               //Esc key closes search
               $(document).keyup(function(event) {
                 if (event.which == 27) {
                   $("#search-check, #info-check").attr("checked", false);
                 }
               });
-
+ 
               //Set correct placeholder text for search input.. otherwise it dissapears on focus
               $("#tictail_search_box").attr("placeholder", $('.placeholder').val());
-
+ 
               //Focus on search input when search is activated
               $("#search-check").change(function() {
                 if(this.checked) {
                   $("#tictail_search_box").focus();
                 }
               });
-
+ 
               //Slider function
               function animProduct() {
                 $(".rotation-ship").css("left",-($(window).width() * slide));
                 $("#product-details").css('top', $(".rotation img:eq("+slide+")").height() + 30);
               }
-
+ 
               //Stuff to do when resizing finishes.. reset carousel, load high-res images
               function resizeend() {
                   if (new Date() - rtime < delta) {
@@ -1961,31 +1991,36 @@ http://andrevv.com
                       setImgSrc($(this));
                     });
                     animProduct();
-                  }             
+                  }
+                  $('.variation label').css('height','');
+                  ogH = $('.variation label').outerHeight() + 1;
+ 
+              }
 
-                  
+              function setVariationHeight() {
 
               }
              
              //Checks first variation always. Otherwise breaks when some are out of stock.
              $('.variation input').first().attr('checked', true);
-
+ 
              //Set open height for variation selects
-             var ogH = $('.variation label').outerHeight();
+             var ogH = $('.variation label').outerHeight() + 1;
+
               $('.tictail_variation_label').click(function() {
                 
                 $(this).closest('.variation').toggleClass('open');
                 
                 var varH = ogH * $('.variation label').length;
                 $('.variation.open').css("height", varH);
-                $('.variation:not(.open)').css('height', ogH + 1);
-
+                $('.variation:not(.open)').css('height', ogH);
+ 
               });
-
+ 
               
             });
         </script>
     </body>
 </html>
-
+ 
 <!-- :) -->
