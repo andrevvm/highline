@@ -660,8 +660,6 @@ http://andrevv.com
               display: none;
             }
  
- 
- 
             li.variation input:checked + label {
               display: block;
               background-image: url("{{assets_url}}/115849/icon-select.png");
@@ -804,7 +802,9 @@ http://andrevv.com
             }
  
             #search-check:checked ~ #search,
-            #info-check:checked ~ #info {
+            #info-check:checked ~ #info,
+            #search.checked,
+            #info.checked {
               opacity: 1;
               left: 0;
               -webkit-transition: opacity, left;
@@ -825,12 +825,16 @@ http://andrevv.com
             }
  
             #info-check:checked ~ #info #info-close,
-            #search-check:checked ~ #search #search-close {
+            #search-check:checked ~ #search #search-close,
+            #info.checked #info-close,
+            #search.checked #search-close {
               display: block;
             }
  
             #search-check:checked ~ #search input,
-            #info-check:checked ~ #info .html_content {
+            #info-check:checked ~ #info .html_content,
+            #search.checked input,
+            #info.checked .html_content {
               opacity: 1;
               -webkit-transition: opacity 200ms 200ms;
               -moz-transition: opacity 200ms 200ms;
@@ -1750,13 +1754,13 @@ http://andrevv.com
         </div>
         
 <!-- Search Overlay -->
-        <div id="search" class="border">
+        <div id="search">
           {{search}}
           <label id="search-close" class="icon-close action-icon" for="search-check">close</label>
         </div>
  
 <!-- Info Overlay -->
-        <div id="info" class="border">
+        <div id="info">
           <div class="html_content">
             <div class="store-description">{{store_description}}</div>
             {{#store_blog_url}}
@@ -2017,6 +2021,26 @@ http://andrevv.com
               
             });
         </script>
+
+        <!--[if (gte IE 6)&(lte IE 8)]>
+          <script type="text/javascript">
+            
+            // Overlay fallbacks for IE 
+
+            $('.icon-info').click(function() {
+              $('#info').addClass('checked');
+            });
+            $('#info-close').click(function() {
+              $('#info').removeClass('checked');
+            });
+            $('.icon-search').click(function() {
+              $('#search').addClass('checked');
+            });
+            $('#search-close').click(function() {
+              $('#search').removeClass('checked');
+            });
+          </script>
+        <![endif]-->
     </body>
 </html>
  
