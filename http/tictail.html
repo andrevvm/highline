@@ -776,7 +776,7 @@ http://andrevv.com
               height: 100%;
               background: black;
               background: rgba(0,0,0,0.9);
-              z-index: 9998;
+              z-index: 9997;
               overflow: auto;
               opacity: 0;
               left: -1000%;
@@ -828,8 +828,8 @@ http://andrevv.com
               transition-delay: 0ms, 0ms;
             }
  
-            #info-check:checked ~ #info #info-close,
-            #search-check:checked ~ #search #search-close {
+            #info-check:checked ~ #info-close,
+            #search-check:checked ~ #search-close {
               display: block;
             }
 
@@ -870,7 +870,7 @@ http://andrevv.com
             }
  
             #info-check:checked ~ header {
-              z-index: 9999;
+              z-index: 9998;
               opacity: 1;
               -webkit-transition: z-index 0ms 0ms, opacity 200ms 0ms;
               -moz-transition: z-index 0ms 0ms, opacity 200ms 0ms;
@@ -1767,8 +1767,8 @@ http://andrevv.com
 <!-- Search Overlay -->
         <div id="search">
           {{search}}
-          <label id="search-close" class="icon-close action-icon" for="search-check">close</label>
         </div>
+        <label id="search-close" class="icon-close action-icon" for="search-check">close</label>
  
 <!-- Info Overlay -->
         <div id="info">
@@ -1779,11 +1779,8 @@ http://andrevv.com
             {{/store_blog_url}}
             <p><a href="mailto:{{store_email}}" class="store-email">{{store_email}}</a></p>
           </div>
- 
-          
- 
-          <label id="info-close" class="icon-close-black action-icon" for="info-check">close</label>
         </div>
+        <label id="info-close" class="icon-close-black action-icon" for="info-check">close</label>
  
 <!-- Fun Zone! -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
