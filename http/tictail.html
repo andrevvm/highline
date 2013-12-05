@@ -774,8 +774,9 @@ http://andrevv.com
               left: 0;
               width: 100%;
               height: 100%;
+              background: black;
               background: rgba(0,0,0,0.9);
-              z-index: 10000;
+              z-index: 9998;
               overflow: auto;
               opacity: 0;
               left: -1000%;
@@ -800,11 +801,14 @@ http://andrevv.com
               position: fixed;
               left: -9000px;
             }
- 
+
+            #search.checked, #info.checked {
+              opacity: 1;
+              left: 0;
+            }
+
             #search-check:checked ~ #search,
-            #info-check:checked ~ #info,
-            #search.checked,
-            #info.checked {
+            #info-check:checked ~ #info {
               opacity: 1;
               left: 0;
               -webkit-transition: opacity, left;
@@ -825,22 +829,28 @@ http://andrevv.com
             }
  
             #info-check:checked ~ #info #info-close,
-            #search-check:checked ~ #search #search-close,
+            #search-check:checked ~ #search #search-close {
+              display: block;
+            }
+
             #info.checked #info-close,
             #search.checked #search-close {
               display: block;
             }
  
             #search-check:checked ~ #search input,
-            #info-check:checked ~ #info .html_content,
-            #search.checked input,
-            #info.checked .html_content {
+            #info-check:checked ~ #info .html_content {
               opacity: 1;
               -webkit-transition: opacity 200ms 200ms;
               -moz-transition: opacity 200ms 200ms;
               -o-transition: opacity 200ms 200ms;
               -ms-transition: opacity 200ms 200ms;
               transition: opacity 200ms 200ms;
+            }
+
+            #search.checked input,
+            #info.checked .html_content {
+              opacity: 1;
             }
  
             #search-check:checked ~ #header-actions,
@@ -860,7 +870,7 @@ http://andrevv.com
             }
  
             #info-check:checked ~ header {
-              z-index: 998;
+              z-index: 9999;
               opacity: 1;
               -webkit-transition: z-index 0ms 0ms, opacity 200ms 0ms;
               -moz-transition: z-index 0ms 0ms, opacity 200ms 0ms;
@@ -998,11 +1008,12 @@ http://andrevv.com
               position: fixed;
               top: 10px;
               left: 10px;
-              z-index: 10005;
+              z-index: 9999;
               display: none;
             }
  
             #info {
+              background: white;
               background: rgba(255,255,255,0.9);
               overflow: auto;
             }
